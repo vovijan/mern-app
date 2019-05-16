@@ -24,3 +24,4 @@ yarn-error.log*
 .git
 .idea
 .code
+/backend/node_modules
