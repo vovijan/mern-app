@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const express = require('express');
-var cors = require('cors');
+let 	cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
 const Data = require('./data');
