@@ -1,5 +1,18 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
+
+const Todo = props => (
+	<tr>
+		<td>{ props.todo.todo_description }</td>
+		<td>{ props.todo.todo_responsible }</td>
+		<td>{ props.todo.todo_priority }</td>
+		<td>
+			<Link to={`/edit/ ${props.todo._id}`}>Edit</Link>
+		</td>
+	</tr>
+);
+
 
 export default class TodoList extends Component {
 
@@ -15,6 +28,12 @@ export default class TodoList extends Component {
 			.catch(error => {
 				console.log(error);
 			})
+	};
+
+	todoList = () => {
+		return this.state.data.map((item, i) => {
+			return <Todo todo={item} key={i} />
+		})
 	};
 
 	render() {
