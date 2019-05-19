@@ -43,7 +43,7 @@ export default class EditTodo extends Component {
 		});
 	};
 
-	onChangeTodoCompleted = (e) => {
+	onChangeTodoCompleted = () => {
 		this.setState({
 			todo_completed: !this.state.todo_completed
 		});
@@ -67,7 +67,7 @@ export default class EditTodo extends Component {
 		return (
 			<>
 				<div>
-					<h3 align="center">Update Todo</h3>
+					<h3 style={{ textAlign: 'center' }}>Update Todo</h3>
 					<form onSubmit={this.onSubmit}>
 						<div className="form-group">
 							<label>Description: </label>
@@ -119,7 +119,7 @@ export default class EditTodo extends Component {
 									name="priorityOptions"
 									id="priorityHigh"
 									value="High"
-									checked={this.state.todo_priority==='High'}
+									checked={this.state.todo_priority === 'High'}
 									onChange={this.onChangeTodoPriority}
 								/>
 								<label className="form-check-label">High</label>
