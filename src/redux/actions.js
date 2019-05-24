@@ -1,4 +1,4 @@
-import { GROUP_TODOS, GROUP_TODOS_STARTED, GROUP_TODOS_SUCCESS } from "./constants";
+import { GROUP_TODOS_STARTED, GROUP_TODOS_SUCCESS } from "./constants";
 import axios from 'axios';
 
 export const groupTodos = () => {
@@ -6,8 +6,8 @@ export const groupTodos = () => {
 		dispatch(groupTodosStarted());
 
 		axios.get("http://localhost:3001/test")
-			.then(response => response.json())
-			.then(json => dispatch(groupTodosSuccess(json)))
+			.then(response => response.data)
+			.then(data => dispatch(groupTodosSuccess(data)))
 	}
 };
 
@@ -15,7 +15,7 @@ const groupTodosStarted = () => ({
 	type: GROUP_TODOS_STARTED
 });
 
-export const groupTodosSuccess = (payload) => ({
+const groupTodosSuccess = payload => ({
 	type: GROUP_TODOS_SUCCESS,
 	payload
 });

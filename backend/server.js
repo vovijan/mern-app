@@ -1,4 +1,4 @@
-const db = require('./data.js');
+/*const db = require('./data.js');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
@@ -88,9 +88,9 @@ app.put('/board/update/:id', (req, res, next) => {
 
 });
 
-app.listen(3001, () => console.log('Server listening on port 3001!'));
+app.listen(3001, () => console.log('Server listening on port 3001!'));*/
 
-/*const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const express = require('express');
 let 	cors = require('cors');
 const bodyParser = require('body-parser');
@@ -171,4 +171,4 @@ router.route('/update/:id').post((req, res) => {
 app.use('/test', router);
 
 // launch our backend into a port
-app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));*/
+app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));

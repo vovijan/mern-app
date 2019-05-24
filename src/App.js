@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import CreateTodo from './components/create-todo.component';
 import EditTodo   from './components/edit-todo.component';
-import GroupTodos  from './components/group-todos.component';
+import GroupListContainer from './containers/GroupList.container';
 
 class App extends Component {
   render() {
@@ -24,7 +24,7 @@ class App extends Component {
             </div>
           </nav>
           <br/>
-          <Route path="/" exact component={GroupTodos} />
+          <Route path="/" exact component={GroupListContainer} />
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />
         </div>

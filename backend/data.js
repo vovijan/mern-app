@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+/*const mongoose = require('mongoose');
 
 mongoose.connect('mongodb+srv://vovijan:Huaweig1@clustername-wz4o0.mongodb.net/test?retryWrites=true').then(
 	res => {
@@ -23,8 +23,9 @@ const Board = mongoose.model('Board', {
 module.exports = {
 	Board: Board
 };
+*/
 
-/*const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // this will be our data base's data structure
@@ -44,4 +45,4 @@ const DataSchema = new Schema({
 });
 
 // export the new Schema so we could modify it using Node.js
-module.exports = mongoose.model('Data', DataSchema);*/
+module.exports = mongoose.model('Data', DataSchema);
