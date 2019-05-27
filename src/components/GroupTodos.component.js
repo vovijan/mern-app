@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 import '../App.css';
 
@@ -13,28 +12,13 @@ const Todo = props => (
 	</tr>
 );
 
-
 export default class TodoList extends Component {
 
-	state = {
-		data: []
-	};
-
-	componentDidMount() {
-		axios.get("http://localhost:3001/test")
-			.then(response => {
-				this.setState({data: response.data});
-			})
-			.catch(error => {
-				console.log(error);
-			})
-	};
-
-	todoList = () => {
-		return this.state.data.map((item, i) => {
+	/*todoList = () => {
+		return this.props.data.map((item, i) => {
 			return <Todo todo={item} key={i} />
 		})
-	};
+	};*/
 
 	render() {
 		return (
@@ -48,7 +32,7 @@ export default class TodoList extends Component {
 						</tr>
 					</thead>
 					<tbody>
-						{ this.todoList() }
+						{/* this.todoList() */}
 					</tbody>
 				</table>
 			</>

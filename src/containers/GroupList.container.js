@@ -4,7 +4,7 @@ import GroupTodos from '../components/GroupTodos.component';
 import { groupTodos } from '../redux/actions';
 
 const mapStateToProps = state => ({
-	state: state.data
+	data: state.data
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -27,9 +27,9 @@ class GroupListContainer extends Component {
 	}
 
 	render() {
-		const { state } = this.props;
+		const { data } = this.props;
 		return (
-			<GroupTodos state={state} />
+			<GroupTodos data={data} />
 		)
 	}
 }
