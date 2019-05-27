@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import GroupTodos from '../components/GroupTodos.component';
 import { groupTodos } from '../redux/actions';
@@ -13,12 +13,26 @@ const mapDispatchToProps = dispatch => ({
 	}
 });
 
-const GroupListContainer = ({ groupTodos, state }) => {
+/*const GroupListContainer = ({ groupTodos, state }) => {
 	useEffect(groupTodos, []);
 	return (
 		<GroupTodos state={state} />
 	)
-};
+};*/
+
+class GroupListContainer extends Component {
+
+	componentDidMount() {
+		this.props.groupTodos();
+	}
+
+	render() {
+		const { state } = this.props;
+		return (
+			<GroupTodos state={state} />
+		)
+	}
+}
 
 export default connect(
 	mapStateToProps,
