@@ -154,10 +154,7 @@ router.route('/update/:id').post((req, res) => {
 		if (!todo)
 			res.status(404).send('data is not found');
 		else
-			todo.todo_description = req.body.todo_description;
-			todo.todo_responsible = req.body.todo_responsible;
-			todo.todo_priority = req.body.todo_priority;
-			todo.todo_completed = req.body.todo_completed;
+			todo.title = req.body.title;
 
 			todo.save().then(todo => {
 				res.json('Todo updated!');

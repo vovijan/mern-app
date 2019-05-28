@@ -4,7 +4,7 @@ import GroupTodos from '../components/GroupTodos.component';
 import { groupTodos } from '../redux/actions';
 
 const mapStateToProps = state => ({
-	state
+	state: state.data
 });
 
 const mapDispatchToProps = dispatch => ({

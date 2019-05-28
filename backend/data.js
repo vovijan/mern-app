@@ -30,18 +30,12 @@ const Schema = mongoose.Schema;
 
 // this will be our data base's data structure
 const DataSchema = new Schema({
-	todo_description: {
-		type: String
+	title: {
+		type: String,
+		required: true,
+		default: ''
 	},
-	todo_responsible: {
-		type: String
-	},
-	todo_priority: {
-		type: String
-	},
-	todo_completed: {
-		type: Boolean
-	}
+	items: Array
 });
 
 // export the new Schema so we could modify it using Node.js

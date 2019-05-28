@@ -4,20 +4,14 @@ import axios from	'axios';
 export default class EditTodo extends Component {
 
 	state = {
-		todo_description: '',
-		todo_responsible: '',
-		todo_priority: '',
-		todo_completed: false
+		title: ''
 	};
 
 	componentDidMount() {
 		axios.get("http://localhost:3001/test/" + this.props.match.params.id)
 			.then(response => {
 				this.setState({
-					todo_description: response.data.todo_description,
-					todo_responsible: response.data.todo_responsible,
-					todo_priority: response.data.todo_priority,
-					todo_completed: response.data.todo_completed
+					title: response.data.title
 				})
 			})
 			.catch(error => {
@@ -27,35 +21,14 @@ export default class EditTodo extends Component {
 
 	onChangeTodoDescription = (e) => {
 		this.setState({
-			todo_description: e.target.value
-		});
-	};
-
-	onChangeTodoResponsible = (e) => {
-		this.setState({
-			todo_responsible: e.target.value
-		});
-	};
-
-	onChangeTodoPriority = (e) => {
-		this.setState({
-			todo_priority: e.target.value
-		});
-	};
-
-	onChangeTodoCompleted = () => {
-		this.setState({
-			todo_completed: !this.state.todo_completed
+			title: e.target.value
 		});
 	};
 
 	onSubmit = (e) => {
 		e.preventDefault();
 		const obj = {
-			todo_description: this.state.todo_description,
-			todo_responsible: this.state.todo_responsible,
-			todo_priority: this.state.todo_priority,
-			todo_completed: this.state.todo_completed
+			title: this.state.title
 		};
 		console.log(obj);
 		axios.post("http://localhost:3001/test/update/" + this.props.match.params.id, obj)
@@ -74,7 +47,7 @@ export default class EditTodo extends Component {
 							<input
 								type="text"
 								className="form-control"
-								value={this.state.todo_description}
+								value={this.state.title}
 								onChange={this.onChangeTodoDescription}
 							/>
 						</div>

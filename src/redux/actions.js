@@ -6,7 +6,10 @@ export const groupTodos = () => {
 		dispatch(groupTodosStarted());
 
 		axios.get("http://localhost:3001/test")
-			.then(response => response.data)
+			.then(response => {
+				console.log(response.data);
+				return response.data;
+			})
 			.then(data => dispatch(groupTodosSuccess(data)))
 	}
 };
