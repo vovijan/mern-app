@@ -12,14 +12,7 @@ const Todo = props => (
 	</tr>
 );
 
-export default class TodoList extends Component {
-
-	/*todoList = () => {
-		return this.props.data.map((item, i) => {
-			return <Todo todo={item} key={i} />
-		})
-	};*/
-
+export default class GroupTodos extends Component {
 	render() {
 		return (
 			<>
@@ -32,7 +25,11 @@ export default class TodoList extends Component {
 						</tr>
 					</thead>
 					<tbody>
-						{/* this.todoList() */}
+						{
+							this.props.data.state.map((item, i) => {
+								return <Todo todo={item} key={i} />
+							})
+						}
 					</tbody>
 				</table>
 			</>
