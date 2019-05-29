@@ -40,7 +40,7 @@ export default class EditTodo extends Component {
 		return (
 			<div className="card col-sm-12 text-center">
 				<div className="card-body">
-					<h5 className="card-title">Update Group</h5>
+					<h5 className="card-title">UPDATE GROUP</h5>
 					<form onSubmit={this.onSubmit}>
 						<div className="form-group">
 							<label>Group Name: </label>
@@ -52,7 +52,7 @@ export default class EditTodo extends Component {
 							/>
 						</div>
 						<div className="form-group">
-							<input type="submit" value="Update Todo" className="btn btn-primary" />
+							<input type="submit" value="UPDATE" className="btn btn-primary" />
 						</div>
 					</form>
 				</div>

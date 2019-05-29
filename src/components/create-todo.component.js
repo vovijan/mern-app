@@ -56,74 +56,38 @@ export default class CreateTodo extends Component {
 
 	render() {
 		return (
-			<div style={{ marginTop: 10 }}>
-				<h3>Create New ToDo</h3>
-				<form onSubmit={this.onSubmit}>
-					<div className="form-group">
-						<label>Description:</label>
-						<input
-							type="text"
-							className="form-control"
-							value={this.state.todo_description}
-							onChange={this.onChangeTodoDescription}
-						/>
-					</div>
-					<div className="form-group">
-						<label>Responsible: </label>
-						<input
-							type="text"
-							className="form-control"
-							value={this.state.todo_responsible}
-							onChange={this.onChangeTodoResponsible}
-						/>
-					</div>
-					<div className="form-group">
-						<div className="form-check form-check-inline">
-							<input
-								className="form-check-input"
-							  type="radio"
-							  name="priorityOptions"
-							  id="priorityLow"
-							  value="Low"
-							  checked={this.state.todo_priority==='Low'}
-							  onChange={this.onChangeTodoPriority}
-							/>
-							<label className="form-check-label">Low</label>
-						</div>
-						<div className="form-check form-check-inline">
-							<input
-								className="form-check-input"
-							  type="radio"
-							  name="priorityOptions"
-							  id="priorityMedium"
-							  value="Medium"
-							  checked={this.state.todo_priority==='Medium'}
-							  onChange={this.onChangeTodoPriority}
-							/>
-							<label className="form-check-label">Medium</label>
-						</div>
-						<div className="form-check form-check-inline">
-							<input
-								className="form-check-input"
-							  type="radio"
-							  name="priorityOptions"
-							  id="priorityHigh"
-							  value="High"
-							  checked={this.state.todo_priority==='High'}
-							  onChange={this.onChangeTodoPriority}
-							/>
-							<label className="form-check-label">High</label>
-						</div>
-					</div>
 
-					<div className="form-group">
-						<input
-							type="submit"
-							value="Create ToDo"
-							className="btn btn-primary"
-						/>
+			<div style={{ marginTop: 10 }}>
+				<h3>CREATE NEW GROUP</h3>
+				<div className="card">
+					<div className="card-body">
+						<form onSubmit={this.onSubmit}>
+							<div className="form-group">
+								<div className="form-group row">
+									<label className="col-sm-2 col-form-label">DESCRIPTION: </label>
+									<div className="col-sm-10">
+										<input
+											placeholder="Enter name of group"
+											type="text"
+											className="form-control"
+											value={this.state.todo_description}
+											onChange={this.onChangeTodoDescription}
+										/>
+									</div>
+								</div>
+								<div className="form-group">
+									<input
+										type="submit"
+										value="CREATE GROUP"
+										className="btn btn-primary btn-block"
+									/>
+								</div>
+							</div>
+
+
+						</form>
 					</div>
-				</form>
+				</div>
 			</div>
 		)
 	}
