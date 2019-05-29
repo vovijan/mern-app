@@ -25,6 +25,18 @@ export const reducer = (state = initialState, action) => {
 				error: null,
 				data: action.payload
 			};
+		case ADD_NEW_GROUP_SUCCESS:
+			return {
+				...state,
+				loading: false,
+				error: null,
+				data: [
+					...state.data,
+					{
+						title: action.payload
+					}
+				]
+			};
 		default:
 			return state;
 	}

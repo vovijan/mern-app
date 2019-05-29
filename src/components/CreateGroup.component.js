@@ -47,13 +47,13 @@ export default class CreateGroup extends Component {
 									</div>
 								</div>
 								<div className="form-group">
-									<Link to="/">
+                  {/*<Link to="/">*/}
 										<input
 											type="submit"
 											value="CREATE GROUP"
 											className="btn btn-primary btn-block"
 										/>
-									</Link>
+                  {/*</Link>*/}
 								</div>
 							</div>
 						</form>

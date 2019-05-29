@@ -1,15 +1,15 @@
 import React  from 'react';
 import { connect } from 'react-redux';
 import CreateGroup from '../components/CreateGroup.component';
-import { addNewGroupSuccess } from '../redux/actions';
+import { addGroup } from '../redux/actions';
 
 const mapDispatchToProps = dispatch => ({
-  addNewGroupSuccess: title => {
-    dispatch(addNewGroupSuccess(title));
+  addGroup: title => {
+    dispatch(addGroup(title));
   }
 });
 
-const CreateGroupContainer = ({ addNewGroupSuccess }) => <CreateGroup addGroup={addNewGroupSuccess} />;
+const CreateGroupContainer = ({ addGroup }) => <CreateGroup addGroup={addGroup} />;
 
 export default connect(
   null,
