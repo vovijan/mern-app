@@ -19,7 +19,7 @@ export default class GroupTodos extends Component {
 	render() {
 		return (
 			<>
-				<h3>Group List</h3>
+				<h3>GROUP LIST</h3>
 				<div className="row">
 					{
 						this.props.data.map((item, i) => {

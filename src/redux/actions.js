@@ -40,11 +40,11 @@ const groupTodosSFailure = error => ({
 	}
 });
 
-const addNewGroupStarted = () => ({
+/*const addNewGroupStarted = () => ({
 	type: ADD_NEW_GROUP_STARTED
-});
+});*/
 
-const addNewGroupSuccess = payload => ({
+export const addNewGroupSuccess = payload => ({
 	type: ADD_NEW_GROUP_SUCCESS,
 	payload
 });

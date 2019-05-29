@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import CreateGroup from './components/CreateGroup.component';
 import EditTodo   from './components/edit-todo.component';
 import GroupListContainer from './containers/GroupList.container';
+import CreateGroupContainer from './containers/CreateGroup.container';
 
 class App extends Component {
   render() {
@@ -26,7 +26,7 @@ class App extends Component {
           <br/>
           <Route path="/" exact component={GroupListContainer} />
           <Route path="/edit/:id" component={EditTodo} />
-          <Route path="/create" component={CreateGroup} />
+          <Route path="/create" component={CreateGroupContainer} />
         </div>
       </Router>
     )
