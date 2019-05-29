@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-export default class CreateTodo extends Component {
+export default class CreateGroup extends Component {
 
 	state = {
 		todo_description: '',
@@ -56,7 +56,6 @@ export default class CreateTodo extends Component {
 
 	render() {
 		return (
-
 			<div style={{ marginTop: 10 }}>
 				<h3>CREATE NEW GROUP</h3>
 				<div className="card">
@@ -83,8 +82,6 @@ export default class CreateTodo extends Component {
 									/>
 								</div>
 							</div>
-
-
 						</form>
 					</div>
 				</div>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import CreateTodo from './components/create-todo.component';
+import CreateGroup from './components/CreateGroup.component';
 import EditTodo   from './components/edit-todo.component';
 import GroupListContainer from './containers/GroupList.container';
 
@@ -26,7 +26,7 @@ class App extends Component {
           <br/>
           <Route path="/" exact component={GroupListContainer} />
           <Route path="/edit/:id" component={EditTodo} />
-          <Route path="/create" component={CreateTodo} />
+          <Route path="/create" component={CreateGroup} />
         </div>
       </Router>
     )
