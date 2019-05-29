@@ -38,26 +38,25 @@ export default class EditTodo extends Component {
 
 	render() {
 		return (
-			<>
-				<div>
-					<h3 style={{ textAlign: 'center' }}>Update Group</h3>
+			<div className="card col-sm-12 text-center">
+				<div className="card-body">
+					<h5 className="card-title">Update Group</h5>
 					<form onSubmit={this.onSubmit}>
 						<div className="form-group">
 							<label>Group Name: </label>
 							<input
 								type="text"
-								className="form-control"
+								className="form-control text-center"
 								value={this.state.title}
 								onChange={this.onChangeTodoDescription}
 							/>
 						</div>
-						<br />
 						<div className="form-group">
 							<input type="submit" value="Update Todo" className="btn btn-primary" />
 						</div>
 					</form>
 				</div>
-			</>
+			</div>
 		)
 	}
 }

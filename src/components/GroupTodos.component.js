@@ -4,8 +4,14 @@ import { Link } from 'react-router-dom';
 import '../App.css';
 
 const Todo = props => (
-	<div className="list-group list-group-horizontal col-md-4">
-		<Link className="list-group-item list-group-item-action" to={`/edit/${props.todo._id}`}>{ props.todo.title }</Link>
+	<div className="col-sm-6 mb-4">
+		<div className="card">
+			<div className="card-body">
+				<h5 className="card-title">Group Name</h5>
+				<p className="card-text">-{ props.todo.title }-</p>
+				<Link to={`/edit/${props.todo._id}`} className="btn btn-info btn-block">Edit</Link>
+			</div>
+		</div>
 	</div>
 );
 
