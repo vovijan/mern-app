@@ -2,6 +2,7 @@
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
+const router = express.Router();
 
 app.use(bodyParser.urlencoded({
 	extended: false
@@ -39,7 +40,8 @@ app.use((err, req, res, next) => {
 
 app.get('/boards', (req, res, next) => {
 	db.Board.find({})
-		.then(boards => {
+		.then((err, boards) => {
+			console.log(boards);
 			res.send(boards);
 		})
 		.catch(err => {
@@ -89,6 +91,7 @@ app.put('/board/update/:id', (req, res, next) => {
 });
 
 app.listen(3001, () => console.log('Server listening on port 3001!'));*/
+
 
 const mongoose = require('mongoose');
 const express = require('express');

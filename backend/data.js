@@ -1,15 +1,13 @@
 /*const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://vovijan:Huaweig1@clustername-wz4o0.mongodb.net/test?retryWrites=true').then(
-	res => {
-		console.log('Succesfull connect');
+mongoose.connect('mongodb+srv://vovijan:Huaweig1@clustername-wz4o0.mongodb.net/boards?retryWrites=true')
+	.then(res => {
+		console.log('Successfull connect');
 	}
 )
 	.catch(err => {
 		console.log(`Connect error:${err}`);
 	});
-
-
 
 const Board = mongoose.model('Board', {
 	title: {
@@ -24,7 +22,6 @@ module.exports = {
 	Board: Board
 };
 */
-
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 

@@ -9,18 +9,13 @@ export default class CreateGroup extends Component {
 
 	onChangeTitle = (e) => {
 		this.setState({
-			title: e.target.value
+			[e.target.name]: e.target.value
 		})
 	};
 
 	onSubmit = (e) => {
 		e.preventDefault();
-
-		this.props.addGroup(this.state.title);
-
-		/*axios.post("http://localhost:3001/test/add", newTodo)
-			.then(res => console.log(res.data));*/
-
+		if (this.state.title.trim()) this.props.addGroup(this.state.title);
 		this.setState({
 			title: ''
 		})
@@ -40,6 +35,7 @@ export default class CreateGroup extends Component {
 										<input
 											placeholder="Enter name of group"
 											type="text"
+											name="title"
 											className="form-control"
 											value={this.state.title}
 											onChange={this.onChangeTitle}

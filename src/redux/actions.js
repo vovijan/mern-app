@@ -25,7 +25,7 @@ export const addGroup = ({ title }) => {
 	return dispatch => {
 		dispatch(addNewGroupStarted());
 
-		axios.post("http://localhost:3001/test/add", {title})
+		axios.post("/board", {title})
 			.then(res => dispatch(addNewGroupSuccess(res.data)))
 			.catch(err => dispatch(addNewGroupFailure(err.message)));
 	};
