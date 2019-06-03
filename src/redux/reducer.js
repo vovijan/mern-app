@@ -33,7 +33,8 @@ export const reducer = (state = initialState, action) => {
 				data: [
 					...state.data,
 					{
-						title: action.payload
+						title: action.payload,
+						items: []
 					}
 				]
 			};

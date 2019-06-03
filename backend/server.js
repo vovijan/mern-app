@@ -2,7 +2,6 @@ const db = require('./data.js');
 const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
-const router = express.Router();
 
 app.use(bodyParser.urlencoded({
 	extended: false
@@ -49,7 +48,7 @@ app.get('/boards', (req, res, next) => {
 		})
 });
 
-app.post('/boards', (req, res, next) => {
+app.post('/board', (req, res, next) => {
 		console.log(req.body);
 		let board = new db.Board();
 		board.title = req.body.title;

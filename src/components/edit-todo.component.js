@@ -8,7 +8,7 @@ export default class EditTodo extends Component {
 	};
 
 	componentDidMount() {
-		axios.get("http://localhost:3001/test/" + this.props.match.params.id)
+		axios.get("http://localhost:3001/boards" + this.props.match.params.id)
 			.then(response => {
 				this.setState({
 					title: response.data.title

@@ -1,10 +1,8 @@
 import {
 	GROUP_TODOS_STARTED,
 	GROUP_TODOS_SUCCESS,
-	GROUP_TODOS_FAILURE,
 	ADD_NEW_GROUP_STARTED,
-	ADD_NEW_GROUP_SUCCESS,
-	ADD_NEW_GROUP_FAILURE
+	ADD_NEW_GROUP_SUCCESS
 } from "./constants";
 import axios from 'axios';
 
@@ -14,20 +12,11 @@ export const groupTodos = () => {
 
 		console.log('Current State', getState());
 
-		axios.get("http://localhost:3001/test")
-			.then(response => response.data)
-			.then(data => dispatch(groupTodosSuccess(data)))
-			.catch(err => dispatch(groupTodosFailure(err.message)));
-	};
-};
-
-export const addGroup = ({ title }) => {
-	return dispatch => {
-		dispatch(addNewGroupStarted());
-
-		axios.post("/board", {title})
-			.then(res => dispatch(addNewGroupSuccess(res.data)))
-			.catch(err => dispatch(addNewGroupFailure(err.message)));
+		axios.get("/boards")
+			.then(res => dispatch(groupTodosSuccess(res.data)))
+			.catch(error => {
+				throw(error);
+			});
 	};
 };
 
@@ -40,12 +29,17 @@ const groupTodosSuccess = payload => ({
 	payload
 });
 
-const groupTodosFailure = error => ({
-	type: GROUP_TODOS_FAILURE,
-	payload: {
-		error
-	}
-});
+export const addGroup = title => {
+	return dispatch => {
+		dispatch(addNewGroupStarted());
+
+		axios.post("/board", {title})
+			.then(res => dispatch(addNewGroupSuccess(res.data)))
+			.catch(error => {
+				throw(error);
+			});
+	};
+};
 
 const addNewGroupStarted = () => ({
 	type: ADD_NEW_GROUP_STARTED
@@ -54,11 +48,4 @@ const addNewGroupStarted = () => ({
 const addNewGroupSuccess = payload => ({
 	type: ADD_NEW_GROUP_SUCCESS,
 	payload
-});
-
-const addNewGroupFailure = error => ({
-	type:ADD_NEW_GROUP_FAILURE,
-	payload: {
-		error
-	}
 });
