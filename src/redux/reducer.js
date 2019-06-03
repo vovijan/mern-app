@@ -1,8 +1,7 @@
 import {
-	GROUP_TODOS_SUCCESS,
-	GROUP_TODOS_STARTED,
-	ADD_NEW_GROUP_SUCCESS,
-	ADD_NEW_GROUP_STARTED
+	GROUP_SUCCESS,
+	GROUP_STARTED,
+	ADD_NEW_GROUP_SUCCESS
 } from "./constants";
 
 const initialState = {
@@ -13,12 +12,12 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
 	switch (action.type) {
-		case GROUP_TODOS_STARTED:
+		case GROUP_STARTED:
 			return {
 				...state,
 				loading: true
 			};
-		case GROUP_TODOS_SUCCESS:
+		case GROUP_SUCCESS:
 			return {
 				...state,
 				loading: false,

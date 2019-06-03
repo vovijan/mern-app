@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import GroupTodos from '../components/GroupTodos.component';
-import { groupTodos } from '../redux/actions';
+import { groupList } from '../redux/actions';
 
 const mapStateToProps = state => ({
 	state: state.data
 });
 
 const mapDispatchToProps = dispatch => ({
-	groupTodos: () => {
-		dispatch(groupTodos())
+	groupList: () => {
+		dispatch(groupList())
 	}
 });
 
 class GroupListContainer extends Component {
 
 	componentDidMount() {
-		this.props.groupTodos();
+		this.props.groupList();
 	}
 
 	render() {
