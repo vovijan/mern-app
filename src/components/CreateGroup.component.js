@@ -18,7 +18,7 @@ export default class CreateGroup extends Component {
 		if (this.state.title.trim()) this.props.addGroup(this.state.title);
 		this.setState({
 			title: ''
-		})
+		});
 	};
 
 	render() {
@@ -50,6 +50,9 @@ export default class CreateGroup extends Component {
 											className="btn btn-primary btn-block"
 										/>
                   {/*</Link>*/}
+									<Link to="/">
+										<button className="btn btn-primary">Back</button>
+									</Link>
 								</div>
 							</div>
 						</form>
