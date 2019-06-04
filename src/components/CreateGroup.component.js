@@ -14,7 +14,7 @@ export default class CreateGroup extends Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
-		if (this.state.title.trim()) this.props.addGroup(this.state.title);
+		if (this.state.title.trim()) this.props.addGroup(this.state);
 		this.setState({
 			title: ''
 		});
@@ -28,7 +28,7 @@ export default class CreateGroup extends Component {
 						<div className="form-group row">
 							<div className="col-sm-10">
 								<input
-									placeholder="Enter name of group"
+									placeholder="Enter new name of group"
 									type="text"
 									name="title"
 									className="form-control mr-sm-2"

@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 
 import '../App.css';
 
-const Todo = props => (
-	<div className="col-sm-6 mb-4">
+const Todo = props => {
+	console.log(props.todo.title);
+	return (
+	<div className="col-sm-4 mb-4">
 		<div className="card">
 			<div className="card-body">
 				<h5 className="card-title">Group Name</h5>
@@ -13,7 +15,7 @@ const Todo = props => (
 			</div>
 		</div>
 	</div>
-);
+)};
 
 export default class GroupTodos extends Component {
 	render() {

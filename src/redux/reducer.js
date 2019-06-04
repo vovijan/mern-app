@@ -25,6 +25,7 @@ export const reducer = (state = initialState, action) => {
 				data: action.payload
 			};
 		case ADD_NEW_GROUP_SUCCESS:
+			console.log(action.payload);
 			return {
 				...state,
 				loading: false,
@@ -32,7 +33,7 @@ export const reducer = (state = initialState, action) => {
 				data: [
 					...state.data,
 					{
-						title: action.payload,
+						title: action.payload.title,
 						items: []
 					}
 				]
