@@ -1,7 +1,8 @@
 import {
 	GROUP_SUCCESS,
 	GROUP_STARTED,
-	ADD_NEW_GROUP_SUCCESS
+	ADD_NEW_GROUP_SUCCESS,
+	DELETE_GROUP
 } from "./constants";
 
 const initialState = {
@@ -25,7 +26,6 @@ export const reducer = (state = initialState, action) => {
 				data: action.payload
 			};
 		case ADD_NEW_GROUP_SUCCESS:
-			console.log(action.payload);
 			return {
 				...state,
 				loading: false,
@@ -37,6 +37,13 @@ export const reducer = (state = initialState, action) => {
 						items: []
 					}
 				]
+			};
+		case DELETE_GROUP:
+			return {
+				...state,
+				loading: false,
+				error: null,
+				data: state.data.filter(item => item.id !== action.payload.id)
 			};
 		default:
 			return state;

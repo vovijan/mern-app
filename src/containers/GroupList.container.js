@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import GroupTodos from '../components/GroupTodos.component';
-import { groupList } from '../redux/actions';
+import { groupList, deleteGroup } from '../redux/actions';
 
 const mapStateToProps = state => ({
 	state: state.data
@@ -9,7 +9,10 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
 	groupList: () => {
-		dispatch(groupList())
+		dispatch(groupList());
+	},
+	deleteGroup: (id) => {
+		dispatch(deleteGroup(id));
 	}
 });
 
@@ -22,7 +25,7 @@ class GroupListContainer extends Component {
 	render() {
 		const { state } = this.props;
 		return (
-			<GroupTodos data={state} />
+			<GroupTodos data={state} deleteGroup={deleteGroup} />
 		)
 	}
 }

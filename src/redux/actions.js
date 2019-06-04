@@ -2,7 +2,8 @@ import {
 	GROUP_STARTED,
 	GROUP_SUCCESS,
 	ADD_NEW_GROUP_STARTED,
-	ADD_NEW_GROUP_SUCCESS
+	ADD_NEW_GROUP_SUCCESS,
+	DELETE_GROUP
 } from "./constants";
 import axios from 'axios';
 
@@ -49,3 +50,21 @@ const addNewGroupSuccess = (payload) => ({
 	type: ADD_NEW_GROUP_SUCCESS,
   payload
 });
+
+export const deleteGroup = id => {
+	return dispatch => {
+		axios.delete("/board/:id", id)
+			.then(res => dispatch(deleteGroupSuccess(res.data)))
+			.catch(error => {
+				throw(error);
+			});
+	}
+};
+
+const deleteGroupSuccess = id => ({
+	type: DELETE_GROUP,
+	payload: {
+		id
+	}
+});
+
