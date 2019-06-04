@@ -29,11 +29,11 @@ const groupSuccess = payload => ({
 	payload
 });
 
-export const addGroup = title => {
+export const addGroup = (title, items, _id, __v) => {
 	return dispatch => {
 		dispatch(addNewGroupStarted());
 
-		axios.post("/board", {title})
+		axios.post("/board", {title, items, _id, __v})
 			.then(res => dispatch(addNewGroupSuccess(res.data)))
 			.catch(error => {
 				throw(error);

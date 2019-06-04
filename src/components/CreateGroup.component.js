@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 
 export default class CreateGroup extends Component {
 
@@ -24,40 +23,29 @@ export default class CreateGroup extends Component {
 	render() {
 		return (
 			<>
-				<h3>CREATE NEW GROUP</h3>
-				<div className="card">
-					<div className="card-body">
-						<form onSubmit={this.onSubmit}>
-							<div className="form-group">
-								<div className="form-group row">
-									<label className="col-sm-2 col-form-label">DESCRIPTION: </label>
-									<div className="col-sm-10">
-										<input
-											placeholder="Enter name of group"
-											type="text"
-											name="title"
-											className="form-control"
-											value={this.state.title}
-											onChange={this.onChangeTitle}
-										/>
-									</div>
-								</div>
-								<div className="form-group">
-                  {/*<Link to="/">*/}
-										<input
-											type="submit"
-											value="CREATE GROUP"
-											className="btn btn-primary btn-block"
-										/>
-                  {/*</Link>*/}
-									<Link to="/">
-										<button className="btn btn-primary">Back</button>
-									</Link>
-								</div>
+				<form onSubmit={this.onSubmit} className="form-inline my-2 my-lg-0">
+					<div className="form-group">
+						<div className="form-group row">
+							<div className="col-sm-10">
+								<input
+									placeholder="Enter name of group"
+									type="text"
+									name="title"
+									className="form-control mr-sm-2"
+									value={this.state.title}
+									onChange={this.onChangeTitle}
+								/>
 							</div>
-						</form>
+						</div>
+						<div className="form-group">
+							<input
+								type="submit"
+								value="CREATE GROUP"
+								className="btn btn-outline-success my-2 my-sm-0"
+							/>
+						</div>
 					</div>
-				</div>
+				</form>
 			</>
 		)
 	}
