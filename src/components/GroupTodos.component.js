@@ -12,7 +12,9 @@ const Todo = props => (
 				<Link to={`/edit/${props.todo._id}`} className="btn btn-info mr-3">EDIT</Link>
 				<button
 					className="btn btn-danger"
-					onClick={() => props.deleteGroup(props.todo._id)}
+					onClick={() => {
+						props.deleteGroup(props.todo._id);
+					}}
 				>
 					<i className="fas fa-ban"></i>
 				</button>
@@ -29,7 +31,7 @@ export default class GroupTodos extends Component {
 				<div className="row">
 					{
 						this.props.data.map((item, i) => {
-							return <Todo todo={item} key={i} />
+							return <Todo todo={item} key={i} deleteGroup={this.props.deleteGroup} />
 						})
 					}
 				</div>

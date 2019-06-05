@@ -53,7 +53,7 @@ const addNewGroupSuccess = (payload) => ({
 
 export const deleteGroup = id => {
 	return dispatch => {
-		axios.delete("/board/:id", id)
+		axios.delete(`/board/${id}`)
 			.then(res => dispatch(deleteGroupSuccess(res.data)))
 			.catch(error => {
 				throw(error);
@@ -61,10 +61,8 @@ export const deleteGroup = id => {
 	}
 };
 
-const deleteGroupSuccess = id => ({
+const deleteGroupSuccess = payload => ({
 	type: DELETE_GROUP,
-	payload: {
-		id
-	}
+	payload
 });
 

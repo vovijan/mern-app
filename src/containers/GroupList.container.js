@@ -25,7 +25,7 @@ class GroupListContainer extends Component {
 	render() {
 		const { state } = this.props;
 		return (
-			<GroupTodos data={state} deleteGroup={deleteGroup} />
+			<GroupTodos data={state} deleteGroup={this.props.deleteGroup} />
 		)
 	}
 }
