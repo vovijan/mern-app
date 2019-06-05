@@ -2,23 +2,11 @@ import React, { Component } from 'react';
 import axios from	'axios';
 import { Link } from 'react-router-dom';
 
-export default class EditTodo extends Component {
+export default class EditGroup extends Component {
 
 	state = {
 		title: ''
 	};
-
-	componentDidMount() {
-		axios.get("http://localhost:3001/boards" + this.props.match.params.id)
-			.then(response => {
-				this.setState({
-					title: response.data.title
-				})
-			})
-			.catch(error => {
-				console.log(error);
-			})
-	}
 
 	onChangeTodoDescription = (e) => {
 		this.setState({
@@ -54,7 +42,9 @@ export default class EditTodo extends Component {
 						</div>
 						<div className="form-group">
 							<input type="submit" value="UPDATE" className="btn btn-primary" />
-							<Link to="/">Back</Link>
+							<Link to="/">
+								<button className="btn btn-outline-dark">Back</button>
+							</Link>
 						</div>
 					</form>
 				</div>
