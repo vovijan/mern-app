@@ -3,8 +3,7 @@ import React, { Component } from 'react';
 export default class CreateGroup extends Component {
 
 	state = {
-		title: '',
-		id: Date.now()
+		title: ''
 	};
 
 	onChangeTitle = (e) => {
@@ -15,7 +14,7 @@ export default class CreateGroup extends Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
-		if (this.state.title.trim()) this.props.addGroup(this.state.title, this.state.id);
+		if (this.state.title.trim()) this.props.addGroup(this.state.title);
 		this.setState({
 			title: ''
 		});
@@ -24,7 +23,10 @@ export default class CreateGroup extends Component {
 	render() {
 		return (
 			<>
-				<form onSubmit={this.onSubmit} className="form-inline my-2 my-lg-0">
+				<form
+					onSubmit={this.onSubmit}
+					className="form-inline my-2 my-lg-0"
+				>
 					<div className="form-group">
 						<div className="form-group row">
 							<div className="col-sm-10">

@@ -1,7 +1,6 @@
 import {
 	GROUP_STARTED,
 	GROUP_SUCCESS,
-	ADD_NEW_GROUP_STARTED,
 	ADD_NEW_GROUP_SUCCESS,
 	DELETE_GROUP
 } from "./constants";
@@ -32,19 +31,15 @@ const groupSuccess = payload => ({
 
 export const addGroup = ({title}) => {
 	return dispatch => {
-		dispatch(addNewGroupStarted());
-
 		axios.post("/board", {title})
 			.then(res => dispatch(addNewGroupSuccess(res.data)))
 			.catch(error => {
 				throw(error);
 			});
+
+		dispatch(groupList());
 	};
 };
-
-const addNewGroupStarted = () => ({
-	type: ADD_NEW_GROUP_STARTED
-});
 
 const addNewGroupSuccess = (payload) => ({
 	type: ADD_NEW_GROUP_SUCCESS,
