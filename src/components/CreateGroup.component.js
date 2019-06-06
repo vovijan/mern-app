@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 export default class CreateGroup extends Component {
 
 	state = {
-		title: ''
+		title: '',
+		id: Date.now()
 	};
 
 	onChangeTitle = (e) => {
@@ -14,7 +15,7 @@ export default class CreateGroup extends Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
-		if (this.state.title.trim()) this.props.addGroup(this.state);
+		if (this.state.title.trim()) this.props.addGroup(this.state.title, this.state.id);
 		this.setState({
 			title: ''
 		});
@@ -29,6 +30,7 @@ export default class CreateGroup extends Component {
 							<div className="col-sm-10">
 								<input
 									placeholder="Enter new name of group"
+									autoFocus
 									type="text"
 									name="title"
 									className="form-control mr-sm-2"

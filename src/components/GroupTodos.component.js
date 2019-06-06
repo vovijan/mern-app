@@ -9,7 +9,7 @@ const Todo = props => (
 			<div className="card-body">
 				<h5 className="card-title">Group Name</h5>
 				<p className="card-text">-{ props.todo.title }-</p>
-				<Link to={`/edit/${props.todo._id}`} className="btn btn-info mr-3">EDIT</Link>
+				<Link to={`/${props.todo._id}`} className="btn btn-info mr-3">EDIT</Link>
 				<button
 					className="btn btn-danger"
 					onClick={() => {

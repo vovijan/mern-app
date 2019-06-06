@@ -4,8 +4,8 @@ import CreateGroup from '../components/CreateGroup.component';
 import { addGroup } from '../redux/actions';
 
 const mapDispatchToProps = dispatch => ({
-  addGroup: title => {
-    dispatch(addGroup(title));
+  addGroup: (title, id) => {
+    dispatch(addGroup({title, id}));
   }
 });
 

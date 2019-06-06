@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import axios from	'axios';
 import { Link } from 'react-router-dom';
 
 export default class EditGroup extends Component {
 
 	state = {
-		title: ''
+		title: this.props.group.title
 	};
 
 	onChangeTodoDescription = (e) => {
@@ -16,13 +15,7 @@ export default class EditGroup extends Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
-		const obj = {
-			title: this.state.title
-		};
-		console.log(obj);
-		axios.post("http://localhost:3001/test/update/" + this.props.match.params.id, obj)
-			.then(res => console.log(res.data));
-		this.props.history.push('/');
+
 	};
 
 	render() {

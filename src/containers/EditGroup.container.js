@@ -5,8 +5,13 @@ import EditGroup from '../components/EditGroup.component';
 
 const mapStateToProps = (state, ownProps) => {
 	const selectedGroup = ownProps.match.params.id;
+	console.log(selectedGroup);
+
 	const resultGroup = state.data.find(item => item._id === selectedGroup);
-	return resultGroup;
+	console.log(resultGroup);
+	return {
+		resultGroup
+	};
 };
 
 const EditGroupContainer = ({ resultGroup }) =>

@@ -43,7 +43,7 @@ export const reducer = (state = initialState, action) => {
 				...state,
 				loading: false,
 				error: null,
-				data: state.data.filter(item => item._id !== action.payload.id)
+				data: state.data.filter(item => item._id !== action.payload._id)
 			};
 		default:
 			return state;
