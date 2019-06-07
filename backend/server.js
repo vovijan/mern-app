@@ -20,7 +20,7 @@ app.use(function (req, res, next) {
 app.use((err, req, res, next) => {
 	console.error(err);
 
-	if (err && err.text && err.text === 'ValidationError') {
+	if (err && err.text === 'ValidationError') {
 		let errorData = { statusCode: 400, message: '' };
 		let validationKey = Object.keys(err.errors);
 		validationKey.forEach(key => {
@@ -49,17 +49,17 @@ app.get('/boards', (req, res, next) => {
 });
 
 app.post('/board', (req, res, next) => {
-		console.log(req.body);
-		let board = new db.Board();
-		board.title = req.body.title;
-		board.validate();
-		board.save()
-			.then(() => {
-				res.send(board);
-			})
-			.catch(err => {
-				next(err);
-			})
+	console.log(req.body);
+	let board = new db.Board();
+	board.title = req.body.title;
+	board.validate();
+	board.save()
+		.then(() => {
+			res.send(board);
+		})
+		.catch(err => {
+			next(err);
+		})
 	}
 );
 
@@ -73,7 +73,7 @@ app.delete('/board/:id', (req, res, next) => {
 		})
 });
 
-app.put('/board/update/:id', (req, res, next) => {
+app.put('/board/:id', (req, res, next) => {
 	db.Board.findOneAndUpdate({ _id: req.params.id },
 		{
 			title: req.body.title,

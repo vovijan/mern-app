@@ -36,8 +36,6 @@ export const addGroup = ({title}) => {
 			.catch(error => {
 				throw(error);
 			});
-
-		dispatch(groupList());
 	};
 };
 
