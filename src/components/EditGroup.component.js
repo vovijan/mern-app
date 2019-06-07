@@ -15,7 +15,7 @@ export default class EditGroup extends Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
-
+		this.props.changeGroupName(this.props.group._id, this.state.title);
 	};
 
 	render() {
