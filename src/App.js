@@ -10,11 +10,7 @@ class App extends Component {
     return (
       <Router>
         <div className="container">
-          <nav className="navbar navbar-dark bg-dark">
-            <div className="navbar-brand">MERN-Stack App</div>
-            <CreateGroupContainer />
-          </nav>
-          <br/>
+	        <Route path="/" exact component={CreateGroupContainer} />
           <Route path="/" exact component={GroupListContainer} />
           <Route path="/:id" component={EditGroupContainer} />
         </div>

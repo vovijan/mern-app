@@ -23,33 +23,36 @@ export default class CreateGroup extends Component {
 	render() {
 		return (
 			<>
-				<form
-					onSubmit={this.onSubmit}
-					className="form-inline my-2 my-lg-0"
-				>
-					<div className="form-group">
-						<div className="form-group row">
-							<div className="col-sm-10">
+				<nav className="navbar navbar-dark bg-dark">
+					<div className="navbar-brand">MERN-Stack App</div>
+					<form
+						onSubmit={this.onSubmit}
+						className="form-inline my-2 my-lg-0"
+					>
+						<div className="form-group">
+							<div className="form-group row">
+								<div className="col-sm-10">
+									<input
+										placeholder="Enter new name of group"
+										autoFocus
+										type="text"
+										name="title"
+										className="form-control mr-sm-2"
+										value={this.state.title}
+										onChange={this.onChangeTitle}
+									/>
+								</div>
+							</div>
+							<div className="form-group">
 								<input
-									placeholder="Enter new name of group"
-									autoFocus
-									type="text"
-									name="title"
-									className="form-control mr-sm-2"
-									value={this.state.title}
-									onChange={this.onChangeTitle}
+									type="submit"
+									value="CREATE GROUP"
+									className="btn btn-outline-success my-2 my-sm-0"
 								/>
 							</div>
 						</div>
-						<div className="form-group">
-							<input
-								type="submit"
-								value="CREATE GROUP"
-								className="btn btn-outline-success my-2 my-sm-0"
-							/>
-						</div>
-					</div>
-				</form>
+					</form>
+				</nav>
 			</>
 		)
 	}
