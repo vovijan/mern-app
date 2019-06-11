@@ -60,9 +60,12 @@ const deleteGroupSuccess = payload => ({
 	payload
 });
 
-export const changeGroupName = ({ id, title }) => {
+export const changeGroupName = ({ id, data }) => {
 	return dispatch => {
-		axios.put(`/board/${id}`)
+		axios.put(`/board/${id}`, {
+			items: data.items,
+			title: data.title
+		})
 			.then(res => dispatch(changeGroupNameSuccess(res.data)))
 			.catch(error => {
 				throw(error);

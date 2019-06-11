@@ -74,6 +74,7 @@ app.delete('/board/:id', (req, res, next) => {
 });
 
 app.put('/board/:id', (req, res, next) => {
+	console.log(req.body);
 	db.Board.findOneAndUpdate({ _id: req.params.id },
 		{
 			title: req.body.title,

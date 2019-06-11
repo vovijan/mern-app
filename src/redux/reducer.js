@@ -2,7 +2,7 @@ import {
 	GROUP_SUCCESS,
 	GROUP_STARTED,
 	ADD_NEW_GROUP_SUCCESS,
-	DELETE_GROUP
+	DELETE_GROUP, CHANGE_GROUP_NAME
 } from "./constants";
 
 const initialState = {
@@ -37,6 +37,19 @@ export const reducer = (state = initialState, action) => {
 						title: action.payload.title,
 						items: []
 					}
+				]
+			};
+		case CHANGE_GROUP_NAME:
+			return {
+				...state,
+				data: [
+					state.data.map(item => {
+						if (item._id === action.payload._id) {
+							item.title = action.payload.title;
+							item.items = action.payload.items;
+						}
+						return item;
+					})
 				]
 			};
 		case DELETE_GROUP:

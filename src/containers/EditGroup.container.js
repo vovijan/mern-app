@@ -8,15 +8,15 @@ const mapStateToProps = (state, ownProps) => {
 	console.log(selectedGroup);
 
 	const resultGroup = state.data.find(item => item._id === selectedGroup);
-	console.log(resultGroup);
 	return {
 		resultGroup
 	};
 };
 
 const mapDispatchToProps = dispatch => ({
-	changeGroupName: (id, title) => {
-		dispatch(changeGroupName({ id, title }));
+	changeGroupName: (id, data) => {
+		console.log(data);
+		dispatch(changeGroupName({ id, data }));
 	}
 });
 
