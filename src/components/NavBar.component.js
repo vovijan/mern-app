@@ -22,7 +22,7 @@ export default class NavBar extends React.Component {
 
 	render() {
 		return (
-			<nav className="navbar navbar-dark bg-dark">
+			<nav className="navbar navbar-dark bg-dark mb-5">
 				<div className="navbar-brand">MERN-Stack App</div>
 				<form
 					onSubmit={this.onSubmit}

@@ -20,6 +20,10 @@ export default class EditGroup extends Component {
 	onSubmit = (e) => {
 		e.preventDefault();
 		this.props.changeGroupName(this.props.group._id, this.state);
+		document.querySelector('.alert').style.display = 'block';
+		setTimeout(() => {
+			document.querySelector('.alert').style.display = 'none';
+		}, 3000);
 	};
 
 	render() {
@@ -49,6 +53,7 @@ export default class EditGroup extends Component {
 									<Link to="/">
 										<button className="btn btn-outline-dark">Back</button>
 									</Link>
+									<div className="alert">You message has been sent!</div>
 								</div>
 							</form>
 						</div>
