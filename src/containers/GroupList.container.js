@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import GroupTodos from '../components/GroupTodos.component';
+import GroupTodos from '../components/groups/GroupTodos.component';
 import { groupList, deleteGroup } from '../redux/actions';
 
 const mapStateToProps = state => ({

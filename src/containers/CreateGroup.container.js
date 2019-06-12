@@ -1,6 +1,6 @@
 import React  from 'react';
 import { connect } from 'react-redux';
-import CreateGroup from '../components/CreateGroup.component';
+import CreateGroup from '../components/groups/CreateGroup.component';
 import { addGroup } from '../redux/actions';
 
 const mapDispatchToProps = dispatch => ({

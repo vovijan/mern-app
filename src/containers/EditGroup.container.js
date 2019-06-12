@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import EditGroup from '../components/EditGroup.component';
+import EditGroup from '../components/groups/EditGroup.component';
 import { changeGroupName } from '../redux/actions';
 
 const mapStateToProps = (state, ownProps) => {

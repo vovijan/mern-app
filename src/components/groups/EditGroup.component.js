@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import NavBar from './NavBar.component';
+import TasksList from '../tasks/TasksList.component';
 
-import './style.components.css';
+import '../style.components.css';
 
 export default class EditGroup extends Component {
 
@@ -34,7 +35,7 @@ export default class EditGroup extends Component {
 					value="CREATE TASK"
 				/>
 
-				<div className="column-center">
+				<div className="column-center mb-3">
 					<div className="card col-sm-6 text-center">
 						<div className="card-body">
 							<h5 className="card-title">UPDATE GROUP</h5>
@@ -58,6 +59,10 @@ export default class EditGroup extends Component {
 							</form>
 						</div>
 					</div>
+				</div>
+
+				<div className="column-center">
+					<TasksList data={this.props.group} />
 				</div>
 			</>
 		)
