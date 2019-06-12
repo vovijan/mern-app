@@ -13,3 +13,7 @@
     display: none;
     margin-top: 10px;
 }
+
+.padd-none {
+    padding: 0;
+}

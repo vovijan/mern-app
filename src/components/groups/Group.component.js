@@ -18,6 +18,15 @@ const Group = props => (
 				>
 					<i className="fas fa-ban"></i>
 				</button>
+				<ul>
+					{
+						props.data.items.map((item, i) => {
+							return <li className="card-text padd-none" key={i}>
+								<small className="text-muted">-{item.title}-</small>
+							</li>
+						})
+					}
+				</ul>
 			</div>
 		</div>
 	</div>
