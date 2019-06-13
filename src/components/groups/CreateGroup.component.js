@@ -5,7 +5,7 @@ const CreateGroup = props => (
 	<>
 		<NavBar
 			placeholder="Enter new name of group"
-			addGroup={props.addGroup}
+			addData={props.addGroup}
 			value="CREATE GROUP"
 		/>
 	</>

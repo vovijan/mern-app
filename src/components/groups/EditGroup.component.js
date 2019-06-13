@@ -27,13 +27,20 @@ export default class EditGroup extends Component {
 		}, 3000);
 	};
 
+	testFunction = (title) => {
+		this.props.changeGroupName(this.props.group._id, {
+			title,
+			items: this.props.group.items
+		});
+	};
+
 	render() {
 		return (
 			<>
 				<NavBar
 					placeholder="Enter new name of TASK"
 					value="CREATE TASK"
-					addNewTask={this.props.addNewTask}
+					addData={this.testFunction}
 					_id={this.props.group._id}
 				/>
 

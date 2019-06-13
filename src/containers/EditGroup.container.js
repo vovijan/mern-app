@@ -5,7 +5,6 @@ import { changeGroupName, addNewTask } from '../redux/actions';
 
 const mapStateToProps = (state, ownProps) => {
 	const selectedGroup = ownProps.match.params.id;
-	console.log(selectedGroup);
 
 	const resultGroup = state.data.find(item => item._id === selectedGroup);
 	return {
@@ -16,10 +15,6 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => ({
 	changeGroupName: (id, data) => {
 		dispatch(changeGroupName({ id, data }));
-	},
-	addNewTask: (id, title) => {
-		console.log(id, title);
-		dispatch(addNewTask({ id, title }))
 	}
 });
 
