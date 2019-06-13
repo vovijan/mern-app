@@ -33,6 +33,8 @@ export default class EditGroup extends Component {
 				<NavBar
 					placeholder="Enter new name of TASK"
 					value="CREATE TASK"
+					addNewTask={this.props.addNewTask}
+					_id={this.props.group._id}
 				/>
 
 				<div className="column-center mb-3">

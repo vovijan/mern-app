@@ -14,7 +14,10 @@ export default class NavBar extends React.Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
-		if (this.state.title.trim()) this.props.addGroup(this.state.title);
+		this.props.value === 'CREATE GROUP' ? 
+			this.props.addGroup(this.state.title) :
+			this.props.addNewTask(this.props._id, this.state.title);
+		//if (this.state.title.trim()) this.props.addGroup(this.state.title);
 		this.setState({
 			title: ''
 		});

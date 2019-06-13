@@ -2,7 +2,7 @@ import {
 	GROUP_SUCCESS,
 	GROUP_STARTED,
 	ADD_NEW_GROUP_SUCCESS,
-	DELETE_GROUP, CHANGE_GROUP_NAME
+	DELETE_GROUP, CHANGE_GROUP_NAME, ADD_NEW_TASK
 } from "./constants";
 
 const initialState = {
@@ -58,6 +58,28 @@ export const reducer = (state = initialState, action) => {
 				loading: false,
 				error: null,
 				data: state.data.filter(item => item._id !== action.payload._id)
+			};
+		case ADD_NEW_TASK:
+			return {
+				...state,
+				data: [
+					state.data.map(group => {
+						if (group._id ===action.payload._id) {
+							return {
+								...group,
+								items: [
+									...group.items,
+									{
+										_id: Date.now(),
+										title: action.payload.title,
+										completed: false
+									}
+								]
+							}
+						}
+						return group;
+					})
+				]
 			};
 		default:
 			return state;

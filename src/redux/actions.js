@@ -3,7 +3,8 @@ import {
 	GROUP_SUCCESS,
 	ADD_NEW_GROUP_SUCCESS,
 	DELETE_GROUP,
-	CHANGE_GROUP_NAME
+	CHANGE_GROUP_NAME,
+	ADD_NEW_TASK
 } from "./constants";
 import axios from 'axios';
 
@@ -30,9 +31,9 @@ const groupSuccess = payload => ({
 	payload
 });
 
-export const addGroup = ({title}) => {
+export const addGroup = ({ title }) => {
 	return dispatch => {
-		axios.post("/board", {title})
+		axios.post("/board", { title })
 			.then(res => dispatch(addNewGroupSuccess(res.data)))
 			.catch(error => {
 				throw(error);
@@ -47,7 +48,7 @@ const addNewGroupSuccess = payload => ({
 
 export const deleteGroup = id => {
 	return dispatch => {
-		axios.delete(`/board/${id}`)
+		axios.delete(`/board/${ id }`)
 			.then(res => dispatch(deleteGroupSuccess(res.data)))
 			.catch(error => {
 				throw(error);
@@ -62,7 +63,7 @@ const deleteGroupSuccess = payload => ({
 
 export const changeGroupName = ({ id, data }) => {
 	return dispatch => {
-		axios.put(`/board/${id}`, {
+		axios.put(`/board/${ id }`, {
 			items: data.items,
 			title: data.title
 		})
@@ -75,5 +76,20 @@ export const changeGroupName = ({ id, data }) => {
 
 const changeGroupNameSuccess = payload => ({
 	type: CHANGE_GROUP_NAME,
+	payload
+});
+
+export const addNewTask = ({ title }) => {
+	return dispatch => {
+		axios.post("/board", { title })
+			.then(res => dispatch(addNewTaskSuccess(res.data)))
+			.catch(error => {
+				throw(error);
+			});
+	}
+};
+
+const addNewTaskSuccess = payload => ({
+	type: ADD_NEW_TASK,
 	payload
 });
