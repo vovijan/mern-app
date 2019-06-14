@@ -2,7 +2,8 @@ import {
 	GROUP_SUCCESS,
 	GROUP_STARTED,
 	ADD_NEW_GROUP_SUCCESS,
-	DELETE_GROUP, CHANGE_GROUP_NAME, ADD_NEW_TASK
+	DELETE_GROUP, CHANGE_GROUP,
+	ADD_NEW_TASK
 } from "./constants";
 
 const initialState = {
@@ -39,7 +40,7 @@ export const reducer = (state = initialState, action) => {
 					}
 				]
 			};
-		case CHANGE_GROUP_NAME:
+		case CHANGE_GROUP:
 			return {
 				...state,
 				data: [
@@ -59,7 +60,7 @@ export const reducer = (state = initialState, action) => {
 				error: null,
 				data: state.data.filter(item => item._id !== action.payload._id)
 			};
-		case ADD_NEW_TASK:
+		/*case ADD_NEW_TASK:
 			return {
 				...state,
 				data: [
@@ -80,7 +81,7 @@ export const reducer = (state = initialState, action) => {
 						return group;
 					})
 				]
-			};
+			};*/
 		default:
 			return state;
 	}

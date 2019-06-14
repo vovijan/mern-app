@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import EditGroup from '../components/groups/EditGroup.component';
-import { changeGroupName, addNewTask } from '../redux/actions';
+import { changeGroup, addNewTask } from '../redux/actions';
 
 const mapStateToProps = (state, ownProps) => {
 	const selectedGroup = ownProps.match.params.id;
@@ -13,15 +13,16 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-	changeGroupName: (id, data) => {
-		dispatch(changeGroupName({ id, data }));
+	changeGroup: (id, data) => {
+		console.log(id, data);
+		dispatch(changeGroup({ id, data }));
 	}
 });
 
-const EditGroupContainer = ({ resultGroup, changeGroupName, addNewTask }) =>
+const EditGroupContainer = ({ resultGroup, changeGroup, addNewTask }) =>
 	<EditGroup
 		group={resultGroup}
-		changeGroupName={changeGroupName}
+		changeGroup={changeGroup}
 		addNewTask={addNewTask}
 	/>;
 

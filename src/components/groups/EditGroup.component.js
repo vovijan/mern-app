@@ -18,19 +18,22 @@ export default class EditGroup extends Component {
 		});
 	};
 
-	onSubmit = (e) => {
+	handleClick = (e) => {
 		e.preventDefault();
-		this.props.changeGroupName(this.props.group._id, this.state);
+		console.log(this.props.group._id, this.props.group);
+		this.props.changeGroup(this.props.group._id, this.state);
 		document.querySelector('.alert').style.display = 'block';
 		setTimeout(() => {
 			document.querySelector('.alert').style.display = 'none';
 		}, 3000);
 	};
 
-	testFunction = (title) => {
-		this.props.changeGroupName(this.props.group._id, {
-			title,
-			items: this.props.group.items
+	addTask = (title) => {
+		//console.log(this.props.group._id, {title, items: this.props.group.items});
+		this.props.changeGroup(this.props.group._id, {
+			items: this.props.group.items.map(item => {
+				return item.title = title;
+			})
 		});
 	};
 
@@ -40,15 +43,14 @@ export default class EditGroup extends Component {
 				<NavBar
 					placeholder="Enter new name of TASK"
 					value="CREATE TASK"
-					addData={this.testFunction}
-					_id={this.props.group._id}
+					addData={this.addTask}
 				/>
 
 				<div className="column-center mb-3">
 					<div className="card col-sm-6 text-center">
 						<div className="card-body">
 							<h5 className="card-title">UPDATE GROUP</h5>
-							<form onSubmit={this.onSubmit}>
+							<form>
 								<div className="form-group">
 									<label>Group Name: </label>
 									<input
@@ -59,7 +61,12 @@ export default class EditGroup extends Component {
 									/>
 								</div>
 								<div className="form-group">
-									<input type="submit" value="UPDATE" className="btn btn-primary" />
+									<input
+										type="button"
+										onClick={this.handleClick}
+										value="UPDATE"
+										className="btn btn-primary"
+									/>
 									<Link to="/">
 										<button className="btn btn-outline-dark">Back</button>
 									</Link>

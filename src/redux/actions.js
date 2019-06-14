@@ -3,7 +3,7 @@ import {
 	GROUP_SUCCESS,
 	ADD_NEW_GROUP_SUCCESS,
 	DELETE_GROUP,
-	CHANGE_GROUP_NAME,
+	CHANGE_GROUP,
 	ADD_NEW_TASK
 } from "./constants";
 import axios from 'axios';
@@ -61,25 +61,25 @@ const deleteGroupSuccess = payload => ({
 	payload
 });
 
-export const changeGroupName = ({ id, data }) => {
+export const changeGroup = ({ id, data }) => {
 	return dispatch => {
 		axios.put(`/board/${ id }`, {
 			items: data.items,
 			title: data.title
 		})
-			.then(res => dispatch(changeGroupNameSuccess(res.data)))
+			.then(res => dispatch(changeGroupSuccess(res.data)))
 			.catch(error => {
 				throw(error);
 			});
 	}
 };
 
-const changeGroupNameSuccess = payload => ({
-	type: CHANGE_GROUP_NAME,
+const changeGroupSuccess = payload => ({
+	type: CHANGE_GROUP,
 	payload
 });
 
-export const addNewTask = ({ title }) => {
+/*export const addNewTask = ({ title }) => {
 	return dispatch => {
 		axios.post("/board", { title })
 			.then(res => dispatch(addNewTaskSuccess(res.data)))
@@ -93,3 +93,4 @@ const addNewTaskSuccess = payload => ({
 	type: ADD_NEW_TASK,
 	payload
 });
+*/
