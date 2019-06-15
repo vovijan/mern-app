@@ -3,8 +3,7 @@ import {
 	GROUP_SUCCESS,
 	ADD_NEW_GROUP_SUCCESS,
 	DELETE_GROUP,
-	CHANGE_GROUP,
-	ADD_NEW_TASK
+	CHANGE_GROUP
 } from "./constants";
 import axios from 'axios';
 

@@ -2,8 +2,8 @@ import {
 	GROUP_SUCCESS,
 	GROUP_STARTED,
 	ADD_NEW_GROUP_SUCCESS,
-	DELETE_GROUP, CHANGE_GROUP,
-	ADD_NEW_TASK
+	DELETE_GROUP,
+	CHANGE_GROUP
 } from "./constants";
 
 const initialState = {
