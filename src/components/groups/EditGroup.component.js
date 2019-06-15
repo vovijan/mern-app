@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import NavBar from './NavBar.component';
+import NavBar from '../NavBar.component';
 import TasksList from '../tasks/TasksList.component';
 
 import '../style.components.css';
@@ -25,15 +25,20 @@ export default class EditGroup extends Component {
 		document.querySelector('.alert').style.display = 'block';
 		setTimeout(() => {
 			document.querySelector('.alert').style.display = 'none';
-		}, 3000);
+		}, 500);
 	};
 
 	addTask = (title) => {
-		//console.log(this.props.group._id, {title, items: this.props.group.items});
 		this.props.changeGroup(this.props.group._id, {
-			items: this.props.group.items.map(item => {
-				return item.title = title;
-			})
+			title: this.props.group.title,
+			items: [
+				...this.props.group.items,
+				{
+					_id: Date.now(),
+					title,
+					completed: false
+				}
+			]
 		});
 	};
 
@@ -70,7 +75,7 @@ export default class EditGroup extends Component {
 									<Link to="/">
 										<button className="btn btn-outline-dark">Back</button>
 									</Link>
-									<div className="alert">You message has been sent!</div>
+									<div className="alert">Name of Group is Update!</div>
 								</div>
 							</form>
 						</div>

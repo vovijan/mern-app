@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from './NavBar.component';
+import NavBar from '../NavBar.component';
 
 const CreateGroup = props => (
 	<>

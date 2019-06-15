@@ -43,15 +43,13 @@ export const reducer = (state = initialState, action) => {
 		case CHANGE_GROUP:
 			return {
 				...state,
-				data: [
-					state.data.map(item => {
-						if (item._id === action.payload._id) {
-							item.title = action.payload.title;
-							item.items = action.payload.items;
-						}
-						return item;
-					})
-				]
+				data: state.data.map(item => {
+					if (item._id === action.payload._id) {
+						item.title = action.payload.title;
+						item.items = action.payload.items;
+					}
+					return item;
+				})
 			};
 		case DELETE_GROUP:
 			return {
