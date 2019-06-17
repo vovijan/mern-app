@@ -62,6 +62,7 @@ const deleteGroupSuccess = payload => ({
 
 export const changeGroup = ({ id, data }) => {
 	return dispatch => {
+		console.log({data});
 		axios.put(`/board/${ id }`, {
 			items: data.items,
 			title: data.title
