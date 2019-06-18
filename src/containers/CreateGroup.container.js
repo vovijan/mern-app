@@ -9,7 +9,8 @@ const mapDispatchToProps = dispatch => ({
   }
 });
 
-const CreateGroupContainer = ({ addGroup }) => <CreateGroup addGroup={addGroup} />;
+const CreateGroupContainer = ({ addGroup }) =>
+  <CreateGroup addGroup={addGroup} />;
 
 export default connect(
   null,

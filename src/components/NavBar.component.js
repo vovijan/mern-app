@@ -14,7 +14,6 @@ export default class NavBar extends React.Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
-		console.log(this.state.title);
 		this.props.addData(this.state.title);
 		this.setState({
 			title: ''

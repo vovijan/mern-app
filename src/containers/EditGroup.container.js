@@ -7,7 +7,6 @@ const mapStateToProps = (state, ownProps) => {
 	const selectedGroup = ownProps.match.params.id;
 
 	const resultGroup = state.data.find(item => item._id === selectedGroup);
-	console.log('RESULT - ', resultGroup);
 	return {
 		resultGroup
 	};
@@ -16,7 +15,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => ({
 	changeGroup: (id, data) => {
-		console.log(data);
 		dispatch(changeGroup({ id, data }));
 	}
 });

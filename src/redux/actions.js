@@ -62,13 +62,15 @@ const deleteGroupSuccess = payload => ({
 
 export const changeGroup = ({ id, data }) => {
 	return dispatch => {
-		console.log({data});
 		axios.put(`/board/${ id }`, {
 			items: data.items,
 			title: data.title
 		})
-			.then(res =>
-				dispatch(changeGroupSuccess({_id: id, items: data.items, title: data.title })))
+			.then(res => dispatch(changeGroupSuccess({
+				_id: id,
+				items: data.items,
+				title: data.title
+			})))
 			.catch(error => {
 				throw(error);
 			});
@@ -79,19 +81,3 @@ const changeGroupSuccess = payload => ({
 	type: CHANGE_GROUP,
 	payload
 });
-
-/*export const addNewTask = ({ title }) => {
-	return dispatch => {
-		axios.post("/board", { title })
-			.then(res => dispatch(addNewTaskSuccess(res.data)))
-			.catch(error => {
-				throw(error);
-			});
-	}
-};
-
-const addNewTaskSuccess = payload => ({
-	type: ADD_NEW_TASK,
-	payload
-});
-*/

@@ -44,17 +44,13 @@ export const reducer = (state = initialState, action) => {
 			return {
 				...state,
 				data: state.data.map(item => {
-					console.log(item, action.payload);
 					if (item._id === action.payload._id) {
-						console.log(item.items, action.payload.items);
 						item.title = action.payload.title;
 						item.items = action.payload.items;
-
 					}
 					return item;
 				})
 			};
-
 		case DELETE_GROUP:
 			return {
 				...state,
@@ -62,28 +58,6 @@ export const reducer = (state = initialState, action) => {
 				error: null,
 				data: state.data.filter(item => item._id !== action.payload._id)
 			};
-		/*case ADD_NEW_TASK:
-			return {
-				...state,
-				data: [
-					state.data.map(group => {
-						if (group._id ===action.payload._id) {
-							return {
-								...group,
-								items: [
-									...group.items,
-									{
-										_id: Date.now(),
-										title: action.payload.title,
-										completed: false
-									}
-								]
-							}
-						}
-						return group;
-					})
-				]
-			};*/
 		default:
 			return state;
 	}
