@@ -67,7 +67,8 @@ export const changeGroup = ({ id, data }) => {
 			items: data.items,
 			title: data.title
 		})
-			.then(res => dispatch(changeGroupSuccess(res.data)))
+			.then(res =>
+				dispatch(changeGroupSuccess({_id: id, items: data.items, title: data.title })))
 			.catch(error => {
 				throw(error);
 			});
