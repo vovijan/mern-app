@@ -20,7 +20,7 @@ export default class EditGroup extends Component {
 
 	handleClick = (e) => {
 		e.preventDefault();
-		this.props.changeGroup(this.props.group._id, this.props.group);
+		this.props.changeGroup(this.props.group._id, this.state);
 		document.querySelector('.alert').style.display = 'block';
 		setTimeout(() => {
 			document.querySelector('.alert').style.display = 'none';
