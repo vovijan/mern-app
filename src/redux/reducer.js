@@ -45,8 +45,13 @@ export const reducer = (state = initialState, action) => {
 				...state,
 				data: state.data.map(item => {
 					if (item._id === action.payload._id) {
-						item.title = action.payload.title;
-						item.items = action.payload.items;
+						if (item.title !== action.payload.title) {
+							item.title = action.payload.title;
+						}
+						return {
+							...item,
+							items: action.payload.items
+						}
 					}
 					return item;
 				})

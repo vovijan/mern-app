@@ -83,7 +83,6 @@ export default class EditGroup extends Component {
 
 				<div className="column-center">
 					<TasksList data={this.props.group} />
-					{console.log('!!!!!!!!!!', this.props.group)}
 				</div>
 			</>
 		)
