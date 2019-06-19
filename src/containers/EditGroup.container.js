@@ -5,12 +5,10 @@ import { changeGroup } from '../redux/actions';
 
 const mapStateToProps = (state, ownProps) => {
 	const selectedGroup = ownProps.match.params.id;
-
 	const resultGroup = state.data.find(item => item._id === selectedGroup);
 	return {
 		resultGroup
 	};
-
 };
 
 const mapDispatchToProps = dispatch => ({
