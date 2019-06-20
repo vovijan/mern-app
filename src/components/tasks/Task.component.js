@@ -3,17 +3,39 @@ import React, { Component } from 'react';
 import '../style.components.css';
 
 export default class Task extends Component {
+
+	state = {
+		title: this.props.title,
+		edit: false
+	};
+
+	toggleEditTrue = () => {
+		this.setState({
+			edit: true
+		})
+	};
+
 	render() {
 		return (
 			<>
 				<form className="form-inline d-flex">
-					<div className="form-group">
-						<input
-							type="text"
-							disabled
-							className="form-control"
-							value={this.props.title}
-						/>
+					<div className="form-group" onClick={this.toggleEditTrue}>
+						{
+							this.state.edit ?
+								<input
+									type="text"
+									className="form-control"
+									autoFocus
+									value={this.state.title}
+								/> :
+								<input
+									type="text"
+									className="form-control"
+									disabled
+									value={this.state.title}
+								/>
+						}
+
 					</div>
 					<button
 						type="submit"
