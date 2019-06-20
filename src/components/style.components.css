@@ -5,6 +5,9 @@
 }
 
 .alert {
+    position: absolute;
+    top: 80%;
+    left: 27%;
     text-align: center;
     padding: 10px;
     background: #79c879;

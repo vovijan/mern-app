@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Group from './Group.component';
 
-export default class GroupTodos extends Component {
+export default class GroupList extends Component {
 	render() {
 		return (
 			<div className="card">

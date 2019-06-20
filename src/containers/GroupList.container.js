@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import GroupTodos from '../components/groups/GroupTodos.component';
+import GroupList from '../components/groups/GroupList.component';
 import { groupList, deleteGroup } from '../redux/actions';
 
 const mapStateToProps = state => ({
@@ -25,7 +25,10 @@ class GroupListContainer extends Component {
 	render() {
 		const { state } = this.props;
 		return (
-			<GroupTodos data={state} deleteGroup={this.props.deleteGroup} />
+			<GroupList
+				data={state}
+				deleteGroup={this.props.deleteGroup}
+			/>
 		)
 	}
 }
