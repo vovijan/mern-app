@@ -9,9 +9,21 @@ export default class Task extends Component {
 		edit: false
 	};
 
+	toggleChange = (e) => {
+		this.setState({
+			title: e.target.value
+		})
+	};
+
 	toggleEditTrue = () => {
 		this.setState({
 			edit: true
+		})
+	};
+
+	toggleEditFalse = () => {
+		this.setState({
+			edit: false
 		})
 	};
 
@@ -26,6 +38,7 @@ export default class Task extends Component {
 									type="text"
 									className="form-control"
 									autoFocus
+									onChange={this.toggleChange}
 									value={this.state.title}
 								/> :
 								<input
@@ -38,13 +51,12 @@ export default class Task extends Component {
 
 					</div>
 					<button
-						type="submit"
 						className="btn btn-primary ml-2"
+						onClick={this.toggleEditFalse}
 					>
 						<i className="far fa-save"></i>
 					</button>
 					<button
-						type="submit"
 						className="btn btn-danger ml-2"
 					>
 						<i className="fas fa-ban"></i>
