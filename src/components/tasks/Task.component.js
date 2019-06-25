@@ -4,7 +4,7 @@ import '../style.components.css';
 
 export default class Task extends Component {
 
-	state = {
+	/*state = {
 		title: this.props.title,
 		edit: false
 	};
@@ -25,12 +25,14 @@ export default class Task extends Component {
 		this.setState({
 			edit: false
 		})
-	};
+	};*/
 
 	render() {
 		return (
-			<>
-				<form className="form-inline d-flex">
+			<p>
+				{this.props.title}
+			</p>
+				/*<form className="form-inline d-flex">
 					<div className="form-group" onClick={this.toggleEditTrue}>
 						{
 							this.state.edit ?
@@ -61,8 +63,7 @@ export default class Task extends Component {
 					>
 						<i className="fas fa-ban"></i>
 					</button>
-				</form>
-			</>
+				</form>*/
 		)
 	}
 };
