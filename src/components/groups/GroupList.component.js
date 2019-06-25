@@ -8,7 +8,7 @@ export default class GroupList extends Component {
 				<div className="card-header">
 					<h3>GROUP LIST</h3>
 				</div>
-				<div className="row">
+				<div>
 					{
 						this.props.data.map((item, i) => (
 							 <Group

@@ -1,25 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import EditGroup from '../components/groups/EditGroup.component';
-import {changeGroup, groupList} from '../redux/actions';
+import { changeGroup } from '../redux/actions';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
 	return {
-		state: state.data,
-		selectedGroup: ownProps.match.params.id
+		resultGroup: state.data
 	};
 };
 
 const mapDispatchToProps = dispatch => ({
-	groupList: () => {
-		dispatch(groupList());
-	},
 	changeGroup: (id, data) => {
 		dispatch(changeGroup({ id, data }));
 	}
 });
 
-class EditGroupContainer extends React.Component {
+/*class EditGroupContainer extends React.Component {
 	componentDidMount() {
 		this.props.groupList();
 	}
@@ -36,14 +32,14 @@ class EditGroupContainer extends React.Component {
 			/>
 		)
 	}
-}
+}*/
 
-/*const EditGroupContainer = ({ resultGroup, changeGroup }) =>
+const EditGroupContainer = ({ resultGroup, changeGroup }) =>
 	<EditGroup
 		group={resultGroup}
 		changeGroup={changeGroup}
 	/>;
-*/
+
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps

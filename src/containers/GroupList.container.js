@@ -24,7 +24,6 @@ class GroupListContainer extends Component {
 
 	render() {
 		const { state } = this.props;
-		console.log(state);
 		return (
 			<GroupList
 				data={state}
