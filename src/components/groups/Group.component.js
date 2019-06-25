@@ -2,6 +2,7 @@ import React  from 'react';
 
 import '../style.components.css';
 import TasksList from "../tasks/TasksList.component";
+import AddTask from "../tasks/AddTask.component";
 
 class Group extends React.Component {
 
@@ -26,7 +27,7 @@ class Group extends React.Component {
 		document.querySelector('.alert').style.display = 'block';
 		setTimeout(() => {
 			document.querySelector('.alert').style.display = 'none';
-		}, 500);
+		}, 1500);
 		this.setState({
 			edit: false
 		})
@@ -38,16 +39,18 @@ class Group extends React.Component {
 		})
 	};
 
-	handleClick = (e) => {
-		e.preventDefault();
+	addTask = (title) => {
 		this.props.changeGroup(this.props.data._id, {
-			title: this.state.title,
-			items: this.props.data.items
+			title: this.props.data.title,
+			items: [
+				...this.props.data.items,
+				{
+					_id: Date.now(),
+					title,
+					completed: false
+				}
+			]
 		});
-		document.querySelector('.alert').style.display = 'block';
-		setTimeout(() => {
-			document.querySelector('.alert').style.display = 'none';
-		}, 500);
 	};
 
 	render() {
@@ -57,7 +60,9 @@ class Group extends React.Component {
 					<div className="row"
 						onClick={this.toggleEditTrue}
 					>
-
+						<div className="alert">
+							Update Group Name is Complete!
+						</div>
 						{
 							this.state.edit ?
 								<input
@@ -97,16 +102,7 @@ class Group extends React.Component {
 						</button>
 					</div>
 
-					<div className="alert">Name of Group is Update!</div>
-
-					<div className="row">
-						<button
-							type="button"
-							className="btn btn-light col mt-2"
-						>
-							<i className="fas fa-plus"></i>
-						</button>
-					</div>
+					<AddTask changeGroup={this.addTask} />
 
 					<TasksList data={this.props.data} />
 

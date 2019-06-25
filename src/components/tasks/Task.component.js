@@ -29,9 +29,9 @@ export default class Task extends Component {
 
 	render() {
 		return (
-			<p>
+			<div>
 				{this.props.title}
-			</p>
+			</div>
 				/*<form className="form-inline d-flex">
 					<div className="form-group" onClick={this.toggleEditTrue}>
 						{
