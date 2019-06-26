@@ -11,7 +11,7 @@ export default class AddTask extends React.Component {
 
 	toggleVisibleTrue = () => {
 		this.setState({
-			visible: true
+			visible: !this.state.visible
 		})
 	};
 
@@ -40,10 +40,16 @@ export default class AddTask extends React.Component {
 				<div className="row">
 					<button
 						type="button"
-						className="btn btn-light col mt-2"
+						className="btn btn-info col mt-2"
 						onClick={this.toggleVisibleTrue}
 					>
-						<i className="fas fa-arrow-circle-down"></i>
+
+						{
+							!this.state.visible ?
+								<i className="fas fa-arrow-circle-down"></i> :
+								<i className="fas fa-arrow-circle-up"></i>
+						}
+
 					</button>
 				</div>
 				{

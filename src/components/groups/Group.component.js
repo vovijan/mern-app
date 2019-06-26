@@ -4,17 +4,19 @@ import '../style.components.css';
 import TasksList from "../tasks/TasksList.component";
 import AddTask from "../tasks/AddTask.component";
 
-class Group extends React.Component {
+export default class Group extends React.Component {
 
 	state = {
 		title: this.props.data.title,
 		items: this.props.data.items,
-		edit: false
+		edit: false,
+		check: false
 	};
 
 	toggleEditTrue = () => {
 		this.setState({
-			edit: true
+			edit: true,
+			check: true
 		})
 	};
 
@@ -28,9 +30,17 @@ class Group extends React.Component {
 		setTimeout(() => {
 			document.querySelector('.alert').style.display = 'none';
 		}, 1500);
-		this.setState({
-			edit: false
-		})
+		setTimeout(() => {
+			this.setState({
+				edit: false
+			})
+		}, 1500);
+		setTimeout(() => {
+			this.setState({
+				check: false
+			})
+		}, 500);
+
 	};
 
 	changeGroupName = (e) => {
@@ -59,6 +69,18 @@ class Group extends React.Component {
 			items: this.props.data.items.map(item => {
 				if (item._id === id) {
 					item.completed = !item.completed
+				}
+				return item;
+			})
+		})
+	};
+
+	changeTaskTitle = (id, title) => {
+		this.props.changeGroup(this.props.data._id, {
+			title: this.props.data.title,
+			items: this.props.data.items.map(item => {
+				if (item._id === id) {
+					item.title = title
 				}
 				return item;
 			})
@@ -97,10 +119,15 @@ class Group extends React.Component {
 						{
 							this.state.edit ?
 								<button
-									className="btn btn-primary col mr-2"
+									className="btn btn-success col mr-2"
 									onClick={this.toggleEditFalse}
 								>
-									<i className="fas fa-check"></i>
+									{
+										!this.state.check ?
+											<i className="fas fa-check"></i> :
+											<i className="far fa-save"></i>
+									}
+
 								</button> : null
 						}
 
@@ -119,12 +146,11 @@ class Group extends React.Component {
 					<TasksList
 						data={this.props.data}
 						changeCompleted={this.changeTaskCompleted}
+						changeTitle={this.changeTaskTitle}
 					/>
 
 				</div>
 			</div>
 		)
 	}
-}
-
-export default Group;
+};
