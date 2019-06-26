@@ -1,4 +1,5 @@
 import React from 'react';
+import { Form, FormControl, Nav, Navbar, NavbarBrand } from 'react-bootstrap';
 
 export default class NavBar extends React.Component {
 
@@ -22,36 +23,29 @@ export default class NavBar extends React.Component {
 
 	render() {
 		return (
-			<nav className="navbar navbar-dark bg-dark mb-5">
-				<div className="navbar-brand">MERN-Stack App</div>
-				<form
+			<Navbar bg="dark" variant="dark" className="mb-5">
+				<NavbarBrand >MERN-Stack App</NavbarBrand>
+				<Nav className="mr-auto" />
+				<Form inline
 					onSubmit={this.onSubmit}
-					className="form-inline my-2 my-lg-0"
+					className="my-2 my-lg-0"
 				>
-					<div className="form-group">
-						<div className="form-group row">
-							<div className="col-sm-10">
-								<input
-									placeholder={this.props.placeholder}
-									autoFocus
-									type="text"
-									name="title"
-									className="form-control mr-sm-2"
-									value={this.state.title}
-									onChange={this.onChangeTitle}
-								/>
-							</div>
-						</div>
-						<div className="form-group">
-							<input
-								type="submit"
-								value={this.props.value}
-								className="btn btn-outline-success my-2 my-sm-0"
-							/>
-						</div>
-					</div>
-				</form>
-			</nav>
+					<FormControl
+						placeholder={this.props.placeholder}
+						autoFocus
+						type="text"
+						name="title"
+						className="mr-sm-2"
+						value={this.state.title}
+						onChange={this.onChangeTitle}
+					/>
+					<FormControl
+						type="submit"
+						value={this.props.value}
+						className="btn btn-outline-success my-2 my-sm-0"
+					/>
+				</Form>
+			</Navbar>
 		)
 	}
 }

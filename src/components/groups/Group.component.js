@@ -3,6 +3,7 @@ import React  from 'react';
 import '../style.components.css';
 import TasksList from "../tasks/TasksList.component";
 import AddTask from "../tasks/AddTask.component";
+import {Card, Form, Row} from "react-bootstrap";
 
 export default class Group extends React.Component {
 
@@ -92,30 +93,30 @@ export default class Group extends React.Component {
 
 	render() {
 		return (
-			<div className="card" style={{ border: 'none' }}>
-				<div className="card-body">
-					<div className="row"
+			<Card style={{ border: 'none' }}>
+				<Card.Body>
+					<Row
 						onClick={this.toggleEditTrue}
 					>
 
 						{
 							this.state.edit ?
-								<input
+								<Form.Control
 									type="text"
 									value={ this.state.title }
-									className="form-control mb-2 input-rel"
+									className="mb-2 input-rel"
 									onChange={this.changeGroupName}
 								/> :
-								<input
+								<Form.Control
 									type="text"
 									value={ this.props.data.title }
-									className="form-control mb-2 input-rel"
+									className="mb-2 input-rel"
 									disabled
 								/>
 						}
 
-					</div>
-					<div className="row">
+					</Row>
+					<Row>
 
 						{
 							this.state.edit ?
@@ -140,7 +141,7 @@ export default class Group extends React.Component {
 						>
 							<i className="fas fa-ban"></i>
 						</button>
-					</div>
+					</Row>
 
 					<AddTask changeGroup={this.addTask} />
 
@@ -151,8 +152,8 @@ export default class Group extends React.Component {
 						deleteTask={this.deleteTask}
 					/>
 
-				</div>
-			</div>
+				</Card.Body>
+			</Card>
 		)
 	}
 };

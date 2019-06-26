@@ -1,7 +1,7 @@
 import React from 'react';
 
 import '../style.components.css';
-import {Button, Row} from "react-bootstrap";
+import {Button, Form, Row} from "react-bootstrap";
 
 export default class AddTask extends React.Component {
 
@@ -57,11 +57,12 @@ export default class AddTask extends React.Component {
 				{
 					this.state.visible ?
 						<Row className="input-rel">
-							<input
+							<Form.Control
 								type="text"
 								value={this.state.title}
 								onChange={this.handleChange}
-								className="form-control col-md-9 mt-2"
+								className="col-md-9 mt-2"
+								placeholder="Enter task name"
 							/>
 							<Button
 								variant="success"
