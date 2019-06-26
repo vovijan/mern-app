@@ -1,6 +1,7 @@
 import React from 'react';
 
 import '../style.components.css';
+import {Row} from "react-bootstrap";
 
 export default class AddTask extends React.Component {
 
@@ -37,7 +38,7 @@ export default class AddTask extends React.Component {
 	render() {
 		return (
 			<>
-				<div className="row">
+				<Row>
 					<button
 						type="button"
 						className="btn btn-info col mt-2"
@@ -51,7 +52,7 @@ export default class AddTask extends React.Component {
 						}
 
 					</button>
-				</div>
+				</Row>
 				{
 					this.state.visible ?
 						<div className="row input-rel">

@@ -4,7 +4,7 @@ import Task from './Task.component';
 import '../style.components.css';
 import {Row, Card, ListGroup} from "react-bootstrap";
 
-const TasksList = ({ data, changeCompleted }) => (
+const TasksList = ({ data, changeCompleted, changeTaskTitle }) => (
   <Row>
     {
       data.items.length !== 0 ?
@@ -16,6 +16,7 @@ const TasksList = ({ data, changeCompleted }) => (
                   <Task
                     data={item}
                     changeCompleted={changeCompleted}
+                    changeTaskTitle={changeTaskTitle}
                   />
                 </ListGroup.Item>
               })
