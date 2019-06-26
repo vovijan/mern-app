@@ -53,6 +53,18 @@ class Group extends React.Component {
 		});
 	};
 
+	changeTaskCompleted = (id) => {
+		this.props.changeGroup(this.props.data._id, {
+			title: this.props.data.title,
+			items: this.props.data.items.map(item => {
+				if (item._id === id) {
+					item.completed = !item.completed
+				}
+				return item;
+			})
+		})
+	};
+
 	render() {
 		return (
 			<div className="card" style={{ border: 'none' }}>
@@ -104,7 +116,10 @@ class Group extends React.Component {
 
 					<AddTask changeGroup={this.addTask} />
 
-					<TasksList data={this.props.data} />
+					<TasksList
+						data={this.props.data}
+						changeCompleted={this.changeTaskCompleted}
+					/>
 
 				</div>
 			</div>

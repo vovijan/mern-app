@@ -28,9 +28,24 @@ export default class Task extends Component {
 	};*/
 
 	render() {
+		const completedStyle = {
+			fontStyle: "italic",
+			color: "#cdcdcd",
+			textDecoration: "line-through"
+		};
+		const { title, completed, _id } = this.props.data;
+		const { changeCompleted } = this.props;
 		return (
 			<div>
-				{this.props.title}
+				<p
+					className="marg-none"
+					style={ completed ? completedStyle : null }
+					onClick={() => {
+						changeCompleted(_id)
+					}}
+				>
+					{ title }
+				</p>
 			</div>
 				/*<form className="form-inline d-flex">
 					<div className="form-group" onClick={this.toggleEditTrue}>

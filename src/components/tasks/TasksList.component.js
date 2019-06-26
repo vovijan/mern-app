@@ -3,7 +3,7 @@ import Task from './Task.component';
 
 import '../style.components.css';
 
-const TasksList = ({ data }) => (
+const TasksList = ({ data, changeCompleted }) => (
   <div className="row">
     {
       data.items.length !== 0 ?
@@ -15,7 +15,10 @@ const TasksList = ({ data }) => (
             {
               data.items.map((item, i) => {
                 return <li className="list-group-item " key={i}>
-                  <Task title={item.title}/>
+                  <Task
+                    data={item}
+                    changeCompleted={changeCompleted}
+                  />
                 </li>
               })
             }
