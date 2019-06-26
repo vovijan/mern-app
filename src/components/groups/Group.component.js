@@ -26,10 +26,6 @@ export default class Group extends React.Component {
 			title: this.state.title,
 			items: this.props.data.items
 		});
-		document.querySelector('.alert').style.display = 'block';
-		setTimeout(() => {
-			document.querySelector('.alert').style.display = 'none';
-		}, 1500);
 		setTimeout(() => {
 			this.setState({
 				edit: false
@@ -94,9 +90,7 @@ export default class Group extends React.Component {
 					<div className="row"
 						onClick={this.toggleEditTrue}
 					>
-						<div className="alert">
-							Update Group Name is Complete!
-						</div>
+
 						{
 							this.state.edit ?
 								<input

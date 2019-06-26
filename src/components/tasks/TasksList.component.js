@@ -2,30 +2,28 @@ import React from 'react';
 import Task from './Task.component';
 
 import '../style.components.css';
+import {Row, Card, ListGroup} from "react-bootstrap";
 
 const TasksList = ({ data, changeCompleted }) => (
-  <div className="row">
+  <Row>
     {
       data.items.length !== 0 ?
-        <div className="card mt-2" style={{ border: 'none', width: '100%' }}>
-          <div className="card-header">
-            <h6>TASKS</h6>
-          </div>
-          <ul className="list-group list-group-flush">
+        <Card className="mt-2" style={{ border: 'none', width: '100%' }}>
+          <ListGroup variant="flush">
             {
               data.items.map((item, i) => {
-                return <li className="list-group-item " key={i}>
+                return <ListGroup.Item key={i}>
                   <Task
                     data={item}
                     changeCompleted={changeCompleted}
                   />
-                </li>
+                </ListGroup.Item>
               })
             }
-          </ul>
-        </div> : null
+          </ListGroup>
+        </Card> : null
     }
-  </div>
+  </Row>
 );
 
 export default TasksList;

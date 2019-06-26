@@ -1,31 +1,26 @@
 import React, { Component } from 'react';
+import {Col, Row, Toast, Button, Modal, Form} from 'react-bootstrap';
 
 import '../style.components.css';
 
 export default class Task extends Component {
 
-	/*state = {
-		title: this.props.title,
-		edit: false
+	state = {
+		show: true,
+		showModal: false
 	};
 
-	toggleChange = (e) => {
+	handleClose = () => {
 		this.setState({
-			title: e.target.value
-		})
+			showModal: false
+		});
 	};
 
-	toggleEditTrue = () => {
+	handleShow = () => {
 		this.setState({
-			edit: true
-		})
+			showModal: true
+		});
 	};
-
-	toggleEditFalse = () => {
-		this.setState({
-			edit: false
-		})
-	};*/
 
 	render() {
 		const completedStyle = {
@@ -35,50 +30,73 @@ export default class Task extends Component {
 		};
 		const { title, completed, _id } = this.props.data;
 		const { changeCompleted } = this.props;
+		const { show, showModal } = this.state;
+		const toggleShow = () => this.setState({ show: !show });
 		return (
-			<div>
-				<p
-					className="marg-none"
-					style={ completed ? completedStyle : null }
-					onClick={() => {
-						changeCompleted(_id)
-					}}
-				>
-					{ title }
-				</p>
-			</div>
-				/*<form className="form-inline d-flex">
-					<div className="form-group" onClick={this.toggleEditTrue}>
-						{
-							this.state.edit ?
-								<input
-									type="text"
-									className="form-control"
-									autoFocus
-									onChange={this.toggleChange}
-									value={this.state.title}
-								/> :
-								<input
-									type="text"
-									className="form-control"
-									disabled
-									value={this.state.title}
+			<Row>
+				<Col>
+					<Toast
+						show={ show }
+						onClose={ toggleShow }
+					>
+						<Toast.Header>
+							<strong className="mr-auto">
+								TASK
+							</strong>
+						</Toast.Header>
+						<Toast.Body>
+							<Row>
+								<Col md='10'>
+									<p
+										className="marg-none"
+										style={ completed ? completedStyle : null }
+										onClick={() => {
+											changeCompleted(_id)
+										}}
+									>
+										{ title }
+									</p>
+								</Col>
+								<Button
+									variant="outline-success"
+									onClick={this.handleShow}
 								/>
-						}
-
-					</div>
-					<button
-						className="btn btn-primary ml-2"
-						onClick={this.toggleEditFalse}
-					>
-						<i className="far fa-save"></i>
-					</button>
-					<button
-						className="btn btn-danger ml-2"
-					>
-						<i className="fas fa-ban"></i>
-					</button>
-				</form>*/
+								<Modal
+									show={showModal}
+									onHide={this.handleClose}
+								>
+									<Modal.Header closeButton>
+										<Modal.Title>Rename Task</Modal.Title>
+									</Modal.Header>
+									<Modal.Body>
+										<Form>
+											<Form.Control
+												type="text"
+												placeholder={ title }
+												AutoFocus
+											/>
+										</Form>
+									</Modal.Body>
+									<Modal.Footer>
+										<Button
+											variant="secondary"
+											onClick={this.handleClose}
+										>
+											Close
+										</Button>
+										<Button
+											variant="primary"
+											onClick={this.handleClose}
+										>
+											Save Changes
+										</Button>
+									</Modal.Footer>
+								</Modal>
+							</Row>
+						</Toast.Body>
+					</Toast>
+				</Col>
+			</Row>
 		)
 	}
 };

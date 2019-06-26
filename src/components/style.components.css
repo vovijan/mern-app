@@ -4,21 +4,6 @@
     align-items: center;
 }
 
-.alert {
-    position: absolute;
-    top: -40%;
-    left: 200%;
-    width: 100%;
-    text-align: center;
-    padding: 10px;
-    background: #79c879;
-    color: #fff;
-    margin-bottom: 10px;
-    display: none;
-    margin-top: 10px;
-    z-index: 100;
-}
-
 .marg-none {
     margin: 0;
 }
