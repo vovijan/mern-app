@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Group from './Group.component';
-//import GroupContainer from "../../containers/Group.container";
+import { Card } from "react-bootstrap";
 
 export default class GroupList extends Component {
 	render() {
 		return (
-			<div className="card">
-				<div className="card-header">
+			<Card>
+				<Card.Header>
 					<h3>GROUP LIST</h3>
-				</div>
+				</Card.Header>
 				<div className="flex-row">
 					{
 						this.props.data.map((item, i) => (
@@ -21,7 +21,7 @@ export default class GroupList extends Component {
 						))
 					}
 				</div>
-			</div>
+			</Card>
 		)
 	}
 }

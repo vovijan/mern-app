@@ -1,9 +1,9 @@
 import React from 'react';
-import NavBar from '../NavBar.component';
+import NavBarComponent from '../NavBar.component';
 
 const CreateGroup = props => (
 	<>
-		<NavBar
+		<NavBarComponent
 			placeholder="Enter new name of group"
 			addData={props.addGroup}
 			value="CREATE GROUP"

@@ -83,6 +83,13 @@ export default class Group extends React.Component {
 		})
 	};
 
+	deleteTask = (id) => {
+		this.props.changeGroup(this.props.data._id, {
+			title: this.props.data.title,
+			items: this.props.data.items.filter(item => item._id !== id)
+		})
+	};
+
 	render() {
 		return (
 			<div className="card" style={{ border: 'none' }}>
@@ -141,6 +148,7 @@ export default class Group extends React.Component {
 						data={this.props.data}
 						changeCompleted={this.changeTaskCompleted}
 						changeTitle={this.changeTaskTitle}
+						deleteTask={this.deleteTask}
 					/>
 
 				</div>

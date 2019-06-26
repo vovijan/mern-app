@@ -1,16 +1,23 @@
 import React, { Component } from 'react';
-import {Col, Row, Toast, Button, Modal, Form} from 'react-bootstrap';
+import { Col, Row, Toast, Button, Modal, Form } from 'react-bootstrap';
 
 import '../style.components.css';
 
 export default class Task extends Component {
 
 	state = {
+		title: '',
 		show: true,
 		showModal: false
 	};
 
-	handleClose = () => {
+	handleChangeName = (e) => {
+		this.setState({
+			title: e.target.value
+		});
+	};
+
+	handleCloseModal = () => {
 		this.setState({
 			showModal: false
 		});
@@ -29,15 +36,15 @@ export default class Task extends Component {
 			textDecoration: "line-through"
 		};
 		const { title, completed, _id } = this.props.data;
-		const { changeCompleted } = this.props;
+		const { changeCompleted, changeTitle, deleteTask } = this.props;
 		const { show, showModal } = this.state;
-		const toggleShow = () => this.setState({ show: !show });
+		const toggleClose = () => deleteTask(_id);
 		return (
 			<Row>
 				<Col>
 					<Toast
 						show={ show }
-						onClose={ toggleShow }
+						onClose={ toggleClose }
 					>
 						<Toast.Header>
 							<strong className="mr-auto">
@@ -73,20 +80,26 @@ export default class Task extends Component {
 											<Form.Control
 												type="text"
 												placeholder={ title }
-												AutoFocus
+												value={this.state.title}
+												onChange={this.handleChangeName}
 											/>
 										</Form>
 									</Modal.Body>
 									<Modal.Footer>
 										<Button
 											variant="secondary"
-											onClick={this.handleClose}
+											onClick={this.handleCloseModal}
 										>
 											Close
 										</Button>
 										<Button
 											variant="primary"
-											onClick={this.handleClose}
+											onClick={() => {
+												changeTitle(_id, this.state.title);
+												this.setState({
+													showModal: false
+												});
+											}}
 										>
 											Save Changes
 										</Button>

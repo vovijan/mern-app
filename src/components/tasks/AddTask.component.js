@@ -1,7 +1,7 @@
 import React from 'react';
 
 import '../style.components.css';
-import {Row} from "react-bootstrap";
+import {Button, Row} from "react-bootstrap";
 
 export default class AddTask extends React.Component {
 
@@ -39,9 +39,10 @@ export default class AddTask extends React.Component {
 		return (
 			<>
 				<Row>
-					<button
-						type="button"
-						className="btn btn-info col mt-2"
+					<Button
+						variant="info"
+						block
+						className="mt-2"
 						onClick={this.toggleVisibleTrue}
 					>
 
@@ -51,25 +52,25 @@ export default class AddTask extends React.Component {
 								<i className="fas fa-arrow-circle-up"></i>
 						}
 
-					</button>
+					</Button>
 				</Row>
 				{
 					this.state.visible ?
-						<div className="row input-rel">
+						<Row className="input-rel">
 							<input
 								type="text"
 								value={this.state.title}
 								onChange={this.handleChange}
 								className="form-control col-md-9 mt-2"
 							/>
-							<button
-								type="button"
-								className="btn btn-success col-md-3 mt-2 button-abs"
+							<Button
+								variant="success"
+								className="col-md-3 mt-2 button-abs"
 								onClick={this.toggleVisibleFalse}
 							>
 								<i className="fas fa-thumbtack"></i>
-							</button>
-						</div> : null
+							</Button>
+						</Row> : null
 				}
 			</>
 		)

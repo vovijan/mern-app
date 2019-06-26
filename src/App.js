@@ -5,9 +5,9 @@ import './App.css';
 import GroupListContainer from './containers/GroupList.container';
 import CreateGroupContainer from './containers/CreateGroup.container';
 import Sidebar from "./components/groups/Sidebar.component";
-import {Col, Container, Row} from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 
-class App extends Component {
+export default class App extends Component {
   render() {
     return (
       <Container fluid role="main">
@@ -31,6 +31,4 @@ class App extends Component {
       </Container>
     )
   }
-}
-
-export default App;
+};

@@ -2,9 +2,9 @@ import React from 'react';
 import Task from './Task.component';
 
 import '../style.components.css';
-import {Row, Card, ListGroup} from "react-bootstrap";
+import { Row, Card, ListGroup } from "react-bootstrap";
 
-const TasksList = ({ data, changeCompleted, changeTaskTitle }) => (
+const TasksList = ({ data, changeCompleted, changeTitle, deleteTask }) => (
   <Row>
     {
       data.items.length !== 0 ?
@@ -16,7 +16,8 @@ const TasksList = ({ data, changeCompleted, changeTaskTitle }) => (
                   <Task
                     data={item}
                     changeCompleted={changeCompleted}
-                    changeTaskTitle={changeTaskTitle}
+                    changeTitle={changeTitle}
+                    deleteTask={deleteTask}
                   />
                 </ListGroup.Item>
               })
