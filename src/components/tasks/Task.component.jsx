@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Col, Row, Toast, Button, Modal, Form } from 'react-bootstrap';
 
 import '../style.components.css';
+import {Draggable} from "react-beautiful-dnd";
 
 export default class Task extends Component {
 
@@ -36,78 +37,89 @@ export default class Task extends Component {
 			textDecoration: "line-through"
 		};
 		const { title, completed, _id } = this.props.data;
-		const { changeCompleted, changeTitle, deleteTask } = this.props;
+		const { changeCompleted, changeTitle, deleteTask, index } = this.props;
 		const { show, showModal } = this.state;
 		const toggleClose = () => deleteTask(_id);
 		return (
 			<Row>
 				<Col>
-					<Toast
-						show={ show }
-						onClose={ toggleClose }
-					>
-						<Toast.Header>
-							<strong className="mr-auto">
-								TASK
-							</strong>
-						</Toast.Header>
-						<Toast.Body>
-							<Row>
-								<Col md='10'>
-									<p
-										className="marg-none"
-										style={ completed ? completedStyle : null }
-										onClick={() => {
-											changeCompleted(_id)
-										}}
-									>
-										{ title }
-									</p>
-								</Col>
-								<Button
-									variant="outline-success"
-									onClick={this.handleShow}
-								/>
-								<Modal
-									show={showModal}
-									onHide={this.handleClose}
+					<Draggable draggableId={_id} index={index}>
+						{
+							(provided, snapshot) => (
+								<Toast
+									show={ show }
+									onClose={ toggleClose }
+									{...provided.draggableProps}
+									{...provided.dragHandleProps}
+									ref={provided.innerRef}
+									isDragging={snapshot.isDragging}
+									style={{ backgroundColor: `${props => (props.isDragging ? 'lightgreen' : 'white')}` }}
 								>
-									<Modal.Header closeButton>
-										<Modal.Title>Rename Task</Modal.Title>
-									</Modal.Header>
-									<Modal.Body>
-										<Form>
-											<Form.Control
-												type="text"
-												placeholder={ title }
-												value={this.state.title}
-												onChange={this.handleChangeName}
+									<Toast.Header>
+										<strong className="mr-auto">
+											TASK
+										</strong>
+									</Toast.Header>
+									<Toast.Body>
+										<Row>
+											<Col md='10'>
+												<p
+													className="marg-none"
+													style={ completed ? completedStyle : null }
+													onClick={() => {
+														changeCompleted(_id)
+													}}
+												>
+													{ title }
+												</p>
+											</Col>
+											<Button
+												variant="outline-success"
+												onClick={this.handleShow}
 											/>
-										</Form>
-									</Modal.Body>
-									<Modal.Footer>
-										<Button
-											variant="secondary"
-											onClick={this.handleCloseModal}
-										>
-											Close
-										</Button>
-										<Button
-											variant="primary"
-											onClick={() => {
-												changeTitle(_id, this.state.title);
-												this.setState({
-													showModal: false
-												});
-											}}
-										>
-											Save Changes
-										</Button>
-									</Modal.Footer>
-								</Modal>
-							</Row>
-						</Toast.Body>
-					</Toast>
+											<Modal
+												show={showModal}
+												onHide={this.handleClose}
+											>
+												<Modal.Header closeButton>
+													<Modal.Title>Rename Task</Modal.Title>
+												</Modal.Header>
+												<Modal.Body>
+													<Form>
+														<Form.Control
+															type="text"
+															placeholder={ title }
+															value={this.state.title}
+															onChange={this.handleChangeName}
+														/>
+													</Form>
+												</Modal.Body>
+												<Modal.Footer>
+													<Button
+														variant="secondary"
+														onClick={this.handleCloseModal}
+													>
+														Close
+													</Button>
+													<Button
+														variant="primary"
+														onClick={() => {
+															changeTitle(_id, this.state.title);
+															this.setState({
+																showModal: false
+															});
+														}}
+													>
+														Save Changes
+													</Button>
+												</Modal.Footer>
+											</Modal>
+										</Row>
+									</Toast.Body>
+								</Toast>
+							)
+						}
+					</Draggable>
 				</Col>
 			</Row>
 		)
