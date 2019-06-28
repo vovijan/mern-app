@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { Col, Row, Toast, Button, Modal, Form } from 'react-bootstrap';
+import { Draggable } from "react-beautiful-dnd";
+import styled from 'styled-components';
 
-import '../style.components.css';
-import {Draggable} from "react-beautiful-dnd";
+const Margnone = styled.p`
+	margin: 0;
+`;
 
 export default class Task extends Component {
 
@@ -63,15 +66,14 @@ export default class Task extends Component {
 									<Toast.Body>
 										<Row>
 											<Col md='10'>
-												<p
-													className="marg-none"
+												<Margnone
 													style={ completed ? completedStyle : null }
 													onClick={() => {
 														changeCompleted(_id)
 													}}
 												>
 													{ title }
-												</p>
+												</Margnone>
 											</Col>
 											<Button
 												variant="outline-success"

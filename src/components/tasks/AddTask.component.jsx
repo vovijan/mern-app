@@ -1,7 +1,5 @@
 import React from 'react';
-
-import '../style.components.css';
-import {Button, Form, Row} from "react-bootstrap";
+import { Button, Form, Row } from "react-bootstrap";
 
 export default class AddTask extends React.Component {
 
@@ -56,7 +54,11 @@ export default class AddTask extends React.Component {
 				</Row>
 				{
 					this.state.visible ?
-						<Row className="input-rel">
+						<Row
+							style={{
+								position: 'relative'
+							}}
+						>
 							<Form.Control
 								type="text"
 								value={this.state.title}
@@ -66,7 +68,12 @@ export default class AddTask extends React.Component {
 							/>
 							<Button
 								variant="success"
-								className="col-md-3 mt-2 button-abs"
+								style={{
+									position: 'absolute',
+									right: 0,
+									top: 0,
+								}}
+								className="col-md-3 mt-2"
 								onClick={this.toggleVisibleFalse}
 							>
 								<i className="fas fa-thumbtack"></i>

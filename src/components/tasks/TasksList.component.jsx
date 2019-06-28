@@ -1,7 +1,5 @@
 import React from 'react';
 import Task from './Task.component';
-
-import '../style.components.css';
 import { Row, Card, ListGroup } from "react-bootstrap";
 import { Droppable } from "react-beautiful-dnd";
 
@@ -14,7 +12,13 @@ export default class TasksList extends React.Component {
       <Row>
         {
           items.length !== 0 ?
-            <Card className="mt-2" style={{border: 'none', width: '100%'}}>
+            <Card
+              className="mt-2"
+              style={{
+                border: 'none',
+                width: '100%'
+              }}
+            >
               <Droppable droppableId={_id}>
                 {
                   (provided, snapshot) => (

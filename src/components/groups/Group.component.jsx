@@ -1,9 +1,7 @@
 import React  from 'react';
-
-import '../style.components.css';
 import TasksList from "../tasks/TasksList.component";
 import AddTask from "../tasks/AddTask.component";
-import {Card, Form, Row} from "react-bootstrap";
+import { Card, Form, Row } from "react-bootstrap";
 
 export default class Group extends React.Component {
 
@@ -104,7 +102,7 @@ export default class Group extends React.Component {
 								<Form.Control
 									type="text"
 									value={ this.state.title }
-									className="mb-2 input-rel"
+									className="mb-2"
 									onChange={this.changeGroupName}
 								/> :
 								<Form.Control
