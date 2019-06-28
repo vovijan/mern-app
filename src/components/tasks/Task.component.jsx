@@ -117,12 +117,16 @@ export default class Task extends Component {
 								<MovingTaskContainer
 									show={showModalMoving}
 									closeModalMoving={this.handleCloseModalMoving}
+									_id={_id}
+									title={title}
+									toggleClose={toggleClose}
+									deleteTask={deleteTask}
 								/>
 								<RenameTask
 									show={showModalRename}
 									title={title}
 									changeTitle={changeTitle}
-									id={_id}
+									_id={_id}
 									closeModalRename={this.handleCloseModalRename}
 								/>
 							</Row>

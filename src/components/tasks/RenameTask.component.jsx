@@ -15,7 +15,7 @@ export default class RenameTask extends React.Component {
 
 	render() {
 
-		const { id, title, changeTitle, closeModalRename, show } = this.props;
+		const { _id, title, changeTitle, closeModalRename, show } = this.props;
 
 		return (
 			<>
@@ -46,7 +46,7 @@ export default class RenameTask extends React.Component {
 						<Button
 							variant="primary"
 							onClick={() => {
-								changeTitle(id, this.state.title);
+								changeTitle(_id, this.state.title);
 								closeModalRename();
 							}}
 						>

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MovingTask from '../components/tasks/MovingTask.component';
-import { groupList } from '../redux/actions';
+import {changeGroup, groupList} from '../redux/actions';
 
 const mapStateToProps = state => ({
 	state: state.data
@@ -10,6 +10,9 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 	groupList: () => {
 		dispatch(groupList());
+	},
+	changeGroup: (id, data) => {
+		dispatch(changeGroup({ id, data }));
 	}
 });
 
@@ -20,12 +23,16 @@ class MovingTaskContainer extends Component {
 	}
 
 	render() {
-		const { state, show, closeModalMoving } = this.props;
+		const { state, show, closeModalMoving, changeGroup, deleteTask, _id, title } = this.props;
 		return (
 			<MovingTask
 				data={ state }
 				show={ show }
+				_id={_id}
+				title={title}
 				closeModalMoving={ closeModalMoving }
+				changeGroup={changeGroup}
+				deleteTask={deleteTask}
 			/>
 		)
 	}
