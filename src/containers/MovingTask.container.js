@@ -23,13 +23,14 @@ class MovingTaskContainer extends Component {
 	}
 
 	render() {
-		const { state, show, closeModalMoving, changeGroup, deleteTask, _id, title } = this.props;
+		const { state, show, closeModalMoving, changeGroup, deleteTask, _id, title, completed } = this.props;
 		return (
 			<MovingTask
 				data={ state }
 				show={ show }
 				_id={_id}
 				title={title}
+				completed={completed}
 				closeModalMoving={ closeModalMoving }
 				changeGroup={changeGroup}
 				deleteTask={deleteTask}

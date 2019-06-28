@@ -4,7 +4,7 @@ import {Button, ButtonGroup, Modal} from "react-bootstrap";
 export default class MovingTask extends React.Component {
 	render() {
 
-		const { _id, title, show, closeModalMoving, changeGroup, deleteTask } = this.props;
+		const { _id, title, completed, show, closeModalMoving, changeGroup, deleteTask } = this.props;
 
 		return (
 			<>
@@ -32,7 +32,7 @@ export default class MovingTask extends React.Component {
 														{
 															_id: Date.now(),
 															title: title,
-															completed: false
+															completed: completed
 														}
 													]
 												});

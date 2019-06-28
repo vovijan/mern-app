@@ -4,8 +4,8 @@ import './App.css';
 
 import GroupListContainer from './containers/GroupList.container';
 import CreateGroupContainer from './containers/CreateGroup.container';
-import Sidebar from "./components/groups/Sidebar.component";
 import { Col, Container, Row } from "react-bootstrap";
+import SidebarContainer from "./containers/Sidebar.container";
 
 export default class App extends Component {
   render() {
@@ -14,7 +14,7 @@ export default class App extends Component {
         <CreateGroupContainer />
         <Row>
           <Col md="2">
-            <Sidebar />
+            <SidebarContainer />
           </Col>
           <Col md="10">
             <GroupListContainer />

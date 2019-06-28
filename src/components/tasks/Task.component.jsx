@@ -119,6 +119,7 @@ export default class Task extends Component {
 									closeModalMoving={this.handleCloseModalMoving}
 									_id={_id}
 									title={title}
+									completed={completed}
 									toggleClose={toggleClose}
 									deleteTask={deleteTask}
 								/>

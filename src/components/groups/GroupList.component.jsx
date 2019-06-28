@@ -14,7 +14,7 @@ export default class GroupList extends Component {
 		return (
 			<Card>
 				<Card.Header>
-					<h3>GROUP LIST</h3>
+					<h3>GROUPS</h3>
 				</Card.Header>
 					<Flexrow>
 						{
