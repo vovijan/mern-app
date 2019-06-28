@@ -11,8 +11,6 @@ export const groupList = () => {
 	return (dispatch, getState) => {
 		dispatch(groupStarted());
 
-		console.log('Current State', getState());
-
 		axios.get("/boards")
 			.then(res => dispatch(groupSuccess(res.data)))
 			.catch(error => {

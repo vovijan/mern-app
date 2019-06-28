@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
 import Group from './Group.component';
 import { Card } from "react-bootstrap";
-import { DragDropContext } from 'react-beautiful-dnd';
 import styled from 'styled-components';
 
-const Fellow = styled.div`
+const Flexrow = styled.div`
 	display: flex;
   justify-content: center;
 `;
 
 export default class GroupList extends Component {
-
-	onDragEnd = result => {
-
-	};
 
 	render() {
 		return (
@@ -21,8 +16,7 @@ export default class GroupList extends Component {
 				<Card.Header>
 					<h3>GROUP LIST</h3>
 				</Card.Header>
-				<DragDropContext onDragEnd={this.onDragEnd}>
-					<Fellow>
+					<Flexrow>
 						{
 							this.props.data.map((item, i) => (
 								 <Group
@@ -33,8 +27,7 @@ export default class GroupList extends Component {
 								 />
 							))
 						}
-					</Fellow>
-				</DragDropContext>
+					</Flexrow>
 			</Card>
 		)
 	}

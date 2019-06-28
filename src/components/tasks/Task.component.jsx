@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Col, Row, Toast, Button, Modal, Form } from 'react-bootstrap';
-import { Draggable } from "react-beautiful-dnd";
+import { Col, Row, Toast, Button, OverlayTrigger, Tooltip, ButtonGroup } from 'react-bootstrap';
 import styled from 'styled-components';
+
+import RenameTask from "./RenameTask.component";
+import MovingTaskContainer from "../../containers/MovingTask.container";
 
 const Margnone = styled.p`
 	margin: 0;
@@ -10,118 +12,122 @@ const Margnone = styled.p`
 export default class Task extends Component {
 
 	state = {
-		title: '',
 		show: true,
-		showModal: false
+		showModalMoving: false,
+		showModalRename: false
 	};
 
-	handleChangeName = (e) => {
+	handleCloseModalMoving = () => {
 		this.setState({
-			title: e.target.value
+			showModalMoving: false
 		});
 	};
 
-	handleCloseModal = () => {
+	handleShowModalMoving = () => {
 		this.setState({
-			showModal: false
+			showModalMoving: true
 		});
 	};
 
-	handleShow = () => {
+	handleCloseModalRename = () => {
 		this.setState({
-			showModal: true
+			showModalRename: false
+		});
+	};
+
+	handleShowModalRename = () => {
+		this.setState({
+			showModalRename: true
 		});
 	};
 
 	render() {
+
 		const completedStyle = {
 			fontStyle: "italic",
 			color: "#cdcdcd",
 			textDecoration: "line-through"
 		};
 		const { title, completed, _id } = this.props.data;
-		const { changeCompleted, changeTitle, deleteTask, index } = this.props;
-		const { show, showModal } = this.state;
+		const { changeCompleted, changeTitle, deleteTask } = this.props;
+		const { show, showModalMoving, showModalRename } = this.state;
 		const toggleClose = () => deleteTask(_id);
+
 		return (
 			<Row>
 				<Col>
-					<Draggable draggableId={_id} index={index}>
-						{
-							(provided, snapshot) => (
-								<Toast
-									show={ show }
-									onClose={ toggleClose }
-									{...provided.draggableProps}
-									{...provided.dragHandleProps}
-									ref={provided.innerRef}
-									isDragging={snapshot.isDragging}
-									style={{ backgroundColor: `${props => (props.isDragging ? 'lightgreen' : 'white')}` }}
-								>
-									<Toast.Header>
-										<strong className="mr-auto">
-											TASK
-										</strong>
-									</Toast.Header>
-									<Toast.Body>
-										<Row>
-											<Col md='10'>
-												<Margnone
-													style={ completed ? completedStyle : null }
-													onClick={() => {
-														changeCompleted(_id)
-													}}
-												>
-													{ title }
-												</Margnone>
-											</Col>
-											<Button
-												variant="outline-success"
-												onClick={this.handleShow}
-											/>
-											<Modal
-												show={showModal}
-												onHide={this.handleClose}
-											>
-												<Modal.Header closeButton>
-													<Modal.Title>Rename Task</Modal.Title>
-												</Modal.Header>
-												<Modal.Body>
-													<Form>
-														<Form.Control
-															type="text"
-															placeholder={ title }
-															value={this.state.title}
-															onChange={this.handleChangeName}
-														/>
-													</Form>
-												</Modal.Body>
-												<Modal.Footer>
-													<Button
-														variant="secondary"
-														onClick={this.handleCloseModal}
-													>
-														Close
-													</Button>
-													<Button
-														variant="primary"
-														onClick={() => {
-															changeTitle(_id, this.state.title);
-															this.setState({
-																showModal: false
-															});
-														}}
-													>
-														Save Changes
-													</Button>
-												</Modal.Footer>
-											</Modal>
-										</Row>
-									</Toast.Body>
-								</Toast>
-							)
-						}
-					</Draggable>
+					<Toast
+						show={ show }
+						onClose={ toggleClose }
+					>
+						<Toast.Header>
+							<strong className="mr-auto">
+								TASK
+							</strong>
+						</Toast.Header>
+						<Toast.Body>
+							<Row>
+								<Col md='9'>
+									<OverlayTrigger
+										placement="left"
+										overlay={
+											<Tooltip id="tooltip-left">
+												Complete / Uncompleted
+											</Tooltip>
+										}
+									>
+										<Margnone
+											style={ completed ? completedStyle : null }
+											onClick={() => {
+												changeCompleted(_id)
+											}}
+										>
+											{ title }
+										</Margnone>
+									</OverlayTrigger>
+								</Col>
+								<ButtonGroup aria-label="Basic example">
+									<OverlayTrigger
+										placement="left"
+										overlay={
+											<Tooltip id="tooltip-left">
+												Moving
+											</Tooltip>
+										}
+									>
+										<Button
+											variant="outline-primary"
+											onClick={this.handleShowModalMoving}
+										/>
+									</OverlayTrigger>
+									<OverlayTrigger
+										placement="right"
+										overlay={
+											<Tooltip id="tooltip-right">
+												Rename
+											</Tooltip>
+										}
+									>
+										<Button
+											variant="outline-success"
+											onClick={this.handleShowModalRename}
+										/>
+									</OverlayTrigger>
+								</ButtonGroup>
+								<MovingTaskContainer
+									show={showModalMoving}
+									closeModalMoving={this.handleCloseModalMoving}
+								/>
+								<RenameTask
+									show={showModalRename}
+									title={title}
+									changeTitle={changeTitle}
+									id={_id}
+									closeModalRename={this.handleCloseModalRename}
+								/>
+							</Row>
+						</Toast.Body>
+					</Toast>
 				</Col>
 			</Row>
 		)
