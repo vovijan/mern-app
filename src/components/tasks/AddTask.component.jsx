@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Row } from "react-bootstrap";
+import {Button, Form, OverlayTrigger, Row, Tooltip} from "react-bootstrap";
 
 export default class AddTask extends React.Component {
 
@@ -37,20 +37,29 @@ export default class AddTask extends React.Component {
 		return (
 			<>
 				<Row>
-					<Button
-						variant="info"
-						block
-						className="mt-2"
-						onClick={this.toggleVisibleTrue}
-					>
-
-						{
-							!this.state.visible ?
-								<i className="fas fa-arrow-circle-down"></i> :
-								<i className="fas fa-arrow-circle-up"></i>
+					<OverlayTrigger
+						placement="top"
+						overlay={
+							<Tooltip id="tooltip-top">
+								Click for add Task
+							</Tooltip>
 						}
+					>
+						<Button
+							variant="info"
+							block
+							className="mt-2"
+							onClick={this.toggleVisibleTrue}
+						>
 
-					</Button>
+							{
+								!this.state.visible ?
+									<i className="fas fa-arrow-circle-down"/> :
+									<i className="fas fa-arrow-circle-up"/>
+							}
+
+						</Button>
+					</OverlayTrigger>
 				</Row>
 				{
 					this.state.visible ?
@@ -66,18 +75,27 @@ export default class AddTask extends React.Component {
 								className="col-md-9 mt-2"
 								placeholder="Enter task name"
 							/>
-							<Button
-								variant="success"
-								style={{
-									position: 'absolute',
-									right: 0,
-									top: 0,
-								}}
-								className="col-md-3 mt-2"
-								onClick={this.toggleVisibleFalse}
+							<OverlayTrigger
+								placement="top"
+								overlay={
+									<Tooltip id="tooltip-top">
+										Add
+									</Tooltip>
+								}
 							>
-								<i className="fas fa-thumbtack"></i>
-							</Button>
+								<Button
+									variant="success"
+									style={{
+										position: 'absolute',
+										right: 0,
+										top: 0,
+									}}
+									className="col-md-3 mt-2"
+									onClick={this.toggleVisibleFalse}
+								>
+									<i className="fas fa-thumbtack"/>
+								</Button>
+							</OverlayTrigger>
 						</Row> : null
 				}
 			</>

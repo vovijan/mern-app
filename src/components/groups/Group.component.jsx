@@ -1,7 +1,7 @@
 import React  from 'react';
 import TasksList from "../tasks/TasksList.component";
 import AddTask from "../tasks/AddTask.component";
-import { Card, Form, Row } from "react-bootstrap";
+import {Card, Form, OverlayTrigger, Row, Tooltip} from "react-bootstrap";
 
 export default class Group extends React.Component {
 
@@ -105,12 +105,21 @@ export default class Group extends React.Component {
 									className="mb-2"
 									onChange={this.changeGroupName}
 								/> :
-								<Form.Control
-									type="text"
-									value={ this.props.data.title }
-									className="mb-2 input-rel"
-									disabled
-								/>
+								<OverlayTrigger
+									placement="top"
+									overlay={
+										<Tooltip id="tooltip-top">
+											Click for edit
+										</Tooltip>
+									}
+								>
+									<Form.Control
+										type="text"
+										value={ this.props.data.title }
+										className="mb-2 input-rel"
+										disabled
+									/>
+								</OverlayTrigger>
 						}
 
 					</Row>
@@ -124,21 +133,30 @@ export default class Group extends React.Component {
 								>
 									{
 										!this.state.check ?
-											<i className="fas fa-check"></i> :
-											<i className="far fa-save"></i>
+											<i className="fas fa-check"> Save</i> :
+											<i className="far fa-save"/>
 									}
 
 								</button> : null
 						}
 
-						<button
-							className="btn btn-danger col"
-							onClick={() => {
-								this.props.deleteGroup(this.props.data._id);
-							}}
+						<OverlayTrigger
+							placement="top"
+							overlay={
+								<Tooltip id="tooltip-top">
+									Click for delete
+								</Tooltip>
+							}
 						>
-							<i className="fas fa-ban"></i>
-						</button>
+							<button
+								className="btn btn-danger col"
+								onClick={() => {
+									this.props.deleteGroup(this.props.data._id);
+								}}
+							>
+								<i className="fas fa-ban"/>
+							</button>
+						</OverlayTrigger>
 					</Row>
 
 					<AddTask changeGroup={this.addTask} />

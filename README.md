@@ -1,4 +1,4 @@
-# React App with MERN Stack
+# React App "TODO"
 
 This project is a to-do list with the ability to edit the name of the task and change the status. It is also possible to transfer tasks from one group of tasks to another.
 

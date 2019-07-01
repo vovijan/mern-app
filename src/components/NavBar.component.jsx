@@ -15,7 +15,7 @@ export default class NavBar extends React.Component {
 
 	onSubmit = (e) => {
 		e.preventDefault();
-		this.props.addData(this.state.title);
+		this.props.addGroup(this.state.title);
 		this.setState({
 			title: ''
 		});
@@ -32,7 +32,7 @@ export default class NavBar extends React.Component {
 						className="my-2 my-lg-0"
 					>
 						<FormControl
-							placeholder={this.props.placeholder}
+							placeholder="Enter new name of group"
 							autoFocus
 							type="text"
 							name="title"
@@ -42,7 +42,7 @@ export default class NavBar extends React.Component {
 						/>
 						<FormControl
 							type="submit"
-							value={this.props.value}
+							value="CREATE GROUP"
 							className="btn btn-outline-success my-2 my-sm-0"
 						/>
 					</Form>

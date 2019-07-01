@@ -1,6 +1,6 @@
 import React  from 'react';
 import { connect } from 'react-redux';
-import CreateGroup from '../components/groups/CreateGroup.component';
+import NavBar from '../components/NavBar.component';
 import { addGroup } from '../redux/actions';
 
 const mapDispatchToProps = dispatch => ({
@@ -10,7 +10,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const CreateGroupContainer = ({ addGroup }) =>
-  <CreateGroup addGroup={addGroup} />;
+  <NavBar addGroup={addGroup} />;
 
 export default connect(
   null,
