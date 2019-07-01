@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import GroupList from '../components/groups/GroupList.component';
-import {groupList, deleteGroup, changeGroup} from '../redux/actions';
+import { getGroupList, deleteGroup, changeGroup } from '../redux/actions';
 
 const mapStateToProps = state => ({
 	state: state.data
 });
 
 const mapDispatchToProps = dispatch => ({
-	groupList: () => {
-		dispatch(groupList());
+	getGroupList: () => {
+		dispatch(getGroupList());
 	},
 	deleteGroup: (id) => {
 		dispatch(deleteGroup(id));
@@ -22,7 +22,7 @@ const mapDispatchToProps = dispatch => ({
 class GroupListContainer extends Component {
 
 	componentDidMount() {
-		this.props.groupList();
+		this.props.getGroupList();
 	}
 
 	render() {

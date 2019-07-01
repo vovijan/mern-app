@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import MovingTask from '../components/tasks/MovingTask.component';
-import {changeGroup, groupList} from '../redux/actions';
+import {changeGroup, getGroupList} from '../redux/actions';
 
 const mapStateToProps = state => ({
 	state: state.data
 });
 
 const mapDispatchToProps = dispatch => ({
-	groupList: () => {
-		dispatch(groupList());
+	getGroupList: () => {
+		dispatch(getGroupList());
 	},
 	changeGroup: (id, data) => {
 		dispatch(changeGroup({ id, data }));
@@ -19,7 +19,7 @@ const mapDispatchToProps = dispatch => ({
 class MovingTaskContainer extends Component {
 
 	componentDidMount() {
-		this.props.groupList();
+		this.props.getGroupList();
 	}
 
 	render() {

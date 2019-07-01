@@ -1,30 +1,30 @@
 import {
-	GROUP_STARTED,
-	GROUP_SUCCESS,
+	GET_GROUP_STARTED,
+	GET_GROUP_SUCCESS,
 	ADD_NEW_GROUP_SUCCESS,
 	DELETE_GROUP,
 	CHANGE_GROUP
 } from "./constants";
 import axios from 'axios';
 
-export const groupList = () => {
-	return (dispatch, getState) => {
-		dispatch(groupStarted());
+export const getGroupList = () => {
+	return (dispatch) => {
+		dispatch(getStarted());
 
 		axios.get("/boards")
-			.then(res => dispatch(groupSuccess(res.data)))
+			.then(res => dispatch(getGroupSuccess(res.data)))
 			.catch(error => {
 				throw(error);
 			});
 	};
 };
 
-const groupStarted = () => ({
-	type: GROUP_STARTED
+const getStarted = () => ({
+	type: GET_GROUP_STARTED
 });
 
-const groupSuccess = payload => ({
-	type: GROUP_SUCCESS,
+const getGroupSuccess = payload => ({
+	type: GET_GROUP_SUCCESS,
 	payload
 });
 

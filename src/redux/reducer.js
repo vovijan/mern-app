@@ -1,6 +1,6 @@
 import {
-	GROUP_SUCCESS,
-	GROUP_STARTED,
+	GET_GROUP_SUCCESS,
+	GET_GROUP_STARTED,
 	ADD_NEW_GROUP_SUCCESS,
 	DELETE_GROUP,
 	CHANGE_GROUP
@@ -14,12 +14,12 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
 	switch (action.type) {
-		case GROUP_STARTED:
+		case GET_GROUP_STARTED:
 			return {
 				...state,
 				loading: true
 			};
-		case GROUP_SUCCESS:
+		case GET_GROUP_SUCCESS:
 			return {
 				...state,
 				loading: false,

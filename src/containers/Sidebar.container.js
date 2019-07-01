@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { groupList } from '../redux/actions';
+import { getGroupList } from '../redux/actions';
 import Sidebar from '../components/groups/Sidebar.component';
 
 const mapStateToProps = state => ({
@@ -8,15 +8,15 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-	groupList: () => {
-		dispatch(groupList());
+	getGroupList: () => {
+		dispatch(getGroupList());
 	}
 });
 
 class SidebarContainer extends Component {
 
 	componentDidMount() {
-		this.props.groupList();
+		this.props.getGroupList();
 	}
 
 	render() {

@@ -10,7 +10,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const CreateGroupContainer = ({ addGroup }) =>
-  <NavBar addGroup={addGroup} />;
+  <NavBar addGroup={ addGroup } />;
 
 export default connect(
   null,

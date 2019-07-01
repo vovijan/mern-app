@@ -1,7 +1,7 @@
 import React  from 'react';
 import TasksList from "../tasks/TasksList.component";
 import AddTask from "../tasks/AddTask.component";
-import {Card, Form, OverlayTrigger, Row, Tooltip} from "react-bootstrap";
+import { Card, Form, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 
 export default class Group extends React.Component {
 
