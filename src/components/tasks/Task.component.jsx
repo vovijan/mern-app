@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import RenameTask from "./RenameTask.component";
 import MovingTaskContainer from "../../containers/MovingTask.container";
 
-const TaskNameBlock = styled.p`
+const TaskNameBlock = styled.div`
 	display: flex;
 	margin: 0;
 `;
@@ -69,7 +69,7 @@ export default class Task extends Component {
 						</Toast.Header>
 						<Toast.Body>
 							<Row>
-								<Col md='9'>
+								<Col md='8'>
 									<OverlayTrigger
 										placement="left"
 										overlay={
