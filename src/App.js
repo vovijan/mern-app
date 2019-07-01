@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
+import styled, {createGlobalStyle} from 'styled-components';
 import GroupListContainer from './containers/GroupList.container';
 import CreateGroupContainer from './containers/CreateGroup.container';
 import { Col, Container, Row } from "react-bootstrap";
 import SidebarContainer from "./containers/Sidebar.container";
+
+const GlobalStyle = createGlobalStyle`
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+      "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+  }
+`;
 
 const Footer = styled.footer`
   flex: 0 0 auto;
@@ -21,6 +36,7 @@ export default class App extends Component {
   render() {
     return (
       <Wrapper>
+        <GlobalStyle/>
         <Container fluid role="main">
           <CreateGroupContainer />
           <Row>

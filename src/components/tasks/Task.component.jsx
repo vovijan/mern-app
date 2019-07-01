@@ -49,6 +49,7 @@ export default class Task extends Component {
 			color: "#cdcdcd",
 			textDecoration: "line-through"
 		};
+
 		const { title, completed, _id } = this.props.data;
 		const { changeCompleted, changeTitle, deleteTask } = this.props;
 		const { show, showModalMoving, showModalRename } = this.state;
@@ -130,10 +131,10 @@ export default class Task extends Component {
 								/>
 								<RenameTask
 									show={showModalRename}
+									closeModalRename={this.handleCloseModalRename}
+									_id={_id}
 									title={title}
 									changeTitle={changeTitle}
-									_id={_id}
-									closeModalRename={this.handleCloseModalRename}
 								/>
 							</Row>
 						</Toast.Body>
