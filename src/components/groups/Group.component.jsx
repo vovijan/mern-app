@@ -19,32 +19,33 @@ export default class Group extends React.Component {
 		})
 	};
 
-	toggleEditFalse = (e) => {
+	toggleEditFalse = e => {
+
 		e.preventDefault();
 		this.props.changeGroup(this.props.data._id, {
 			title: this.state.title,
 			items: this.props.data.items
 		});
+
 		setTimeout(() => {
 			this.setState({
 				edit: false
 			})
 		}, 1500);
-		setTimeout(() => {
-			this.setState({
-				check: false
-			})
-		}, 500);
+
+		this.setState({
+			check: false
+		})
 
 	};
 
-	changeGroupName = (e) => {
+	changeGroupName = e => {
 		this.setState({
 			title: e.target.value
 		})
 	};
 
-	addTask = (title) => {
+	addTask = title => {
 		this.props.changeGroup(this.props.data._id, {
 			title: this.props.data.title,
 			items: [
@@ -58,7 +59,7 @@ export default class Group extends React.Component {
 		});
 	};
 
-	changeTaskCompleted = (id) => {
+	changeTaskCompleted = id => {
 		this.props.changeGroup(this.props.data._id, {
 			title: this.props.data.title,
 			items: this.props.data.items.map(item => {
@@ -82,7 +83,7 @@ export default class Group extends React.Component {
 		})
 	};
 
-	deleteTask = (id) => {
+	deleteTask = id => {
 		this.props.changeGroup(this.props.data._id, {
 			title: this.props.data.title,
 			items: this.props.data.items.filter(item => item._id !== id)
@@ -127,23 +128,34 @@ export default class Group extends React.Component {
 
 						{
 							this.state.edit ?
-								<button
-									className="btn btn-success col mr-2"
-									onClick={this.toggleEditFalse}
-								>
-									{
-										!this.state.check ?
-											<i className="fas fa-check"> Save</i> :
-											<i className="far fa-save"/>
-									}
 
-								</button> : null
+								<OverlayTrigger
+									placement="bottom"
+									overlay={
+										<Tooltip id="tooltip-bottom">
+											Save name
+										</Tooltip>
+									}
+								>
+									<button
+										className="btn btn-success col mr-2"
+										onClick={this.toggleEditFalse}
+									>
+										{
+											!this.state.check ?
+												<i className="fas fa-check"> Save</i> :
+												<i className="far fa-save"/>
+										}
+
+									</button>
+								</OverlayTrigger> : null
+
 						}
 
 						<OverlayTrigger
-							placement="top"
+							placement="bottom"
 							overlay={
-								<Tooltip id="tooltip-top">
+								<Tooltip id="tooltip-bottom">
 									Click for delete
 								</Tooltip>
 							}
@@ -159,7 +171,10 @@ export default class Group extends React.Component {
 						</OverlayTrigger>
 					</Row>
 
-					<AddTask changeGroup={this.addTask} />
+					<AddTask
+						changeGroup={this.addTask}
+						items={this.props.data.items}
+					/>
 
 					<TasksList
 						data={this.props.data}

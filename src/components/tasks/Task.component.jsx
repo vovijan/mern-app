@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import { Col, Row, Toast, Button, OverlayTrigger, Tooltip, ButtonGroup } from 'react-bootstrap';
+import { Col, Row, Toast, Button, OverlayTrigger, Tooltip, ButtonGroup, Form } from 'react-bootstrap';
 import styled from 'styled-components';
 
 import RenameTask from "./RenameTask.component";
 import MovingTaskContainer from "../../containers/MovingTask.container";
 
-const Margnone = styled.p`
+const TaskNameBlock = styled.p`
+	display: flex;
 	margin: 0;
 `;
 
@@ -76,14 +77,18 @@ export default class Task extends Component {
 											</Tooltip>
 										}
 									>
-										<Margnone
+										<TaskNameBlock
 											style={ completed ? completedStyle : null }
-											onClick={() => {
-												changeCompleted(_id)
-											}}
 										>
-											{ title }
-										</Margnone>
+											<Form.Check
+												type="checkbox"
+												checked={ completed }
+												onChange={() => {
+													changeCompleted(_id)
+												}}
+											/>
+											<span>{ title }</span>
+										</TaskNameBlock>
 									</OverlayTrigger>
 								</Col>
 								<ButtonGroup aria-label="Basic example">

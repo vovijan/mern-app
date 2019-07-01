@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Form, OverlayTrigger, Row, Tooltip} from "react-bootstrap";
+import {Badge, Button, Form, OverlayTrigger, Row, Tooltip} from "react-bootstrap";
 
 export default class AddTask extends React.Component {
 
@@ -51,13 +51,18 @@ export default class AddTask extends React.Component {
 							className="mt-2"
 							onClick={this.toggleVisibleTrue}
 						>
-
 							{
 								!this.state.visible ?
-									<i className="fas fa-arrow-circle-down"/> :
+									<>
+										<span>Total Task</span>&nbsp;&nbsp;
+										<Badge variant="light">
+											{
+												this.props.items.length
+											}
+										</Badge>
+									</> :
 									<i className="fas fa-arrow-circle-up"/>
 							}
-
 						</Button>
 					</OverlayTrigger>
 				</Row>
