@@ -1,41 +1,31 @@
-import React, { Component } from 'react';
+import React  from 'react';
 import { Card } from "react-bootstrap";
+import SidebarTask from "./SidebarTask.component";
 
-export default class Sidebar extends Component {
+const SidebarGroup = ({ data }) => (
+	<Card>
+		<Card.Header>
+			<h3>Group List</h3>
+		</Card.Header>
 
-	render() {
-		return (
-			<Card>
-				<Card.Header>
-					<h3>Group List</h3>
-				</Card.Header>
-				<Card.Body>
-					{
-						this.props.data.map((item, i) =>
-							<ul
-								key={i}
-							>
-								<li>
-									{item.title}
+		{
+			data.map((item, i) =>
+				<ul
+					key={i}
+				>
+					<li>
+						{item.title}
 
-									{
-										item.items.map((arr, k) =>
-											<ul
-												key={k}
-											>
-												<li>
-													{arr.title}
-												</li>
-											</ul>
-										)
-									}
+						<SidebarTask
+							items={item.items}
+						/>
 
-								</li>
-							</ul>
-						)
-					}
-				</Card.Body>
-			</Card>
-		)
-	}
-};
+					</li>
+				</ul>
+			)
+		}
+
+	</Card>
+);
+
+export default SidebarGroup;

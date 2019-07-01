@@ -16,18 +16,18 @@ export default class GroupList extends Component {
 				<Card.Header>
 					<h3>GROUPS</h3>
 				</Card.Header>
-					<Flexrow>
-						{
-							this.props.data.map((item, i) => (
-								 <Group
-									 data={item}
-									 key={i}
-									 deleteGroup={this.props.deleteGroup}
-									 changeGroup={this.props.changeGroup}
-								 />
-							))
-						}
-					</Flexrow>
+				<Flexrow>
+					{
+						this.props.data.map((item, i) => (
+							 <Group
+								 data={item}
+								 key={i}
+								 deleteGroup={this.props.deleteGroup}
+								 changeGroup={this.props.changeGroup}
+							 />
+						))
+					}
+				</Flexrow>
 			</Card>
 		)
 	}
