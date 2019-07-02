@@ -1,22 +1,43 @@
 import React from 'react';
-import { Button, ButtonGroup, Modal } from "react-bootstrap";
+import {Button, ButtonGroup, Form, Modal} from "react-bootstrap";
 
-export default class MovingTask extends React.Component {
+export default class TaskModal extends React.Component {
+
+	state = {
+		title: ''
+	};
+
+	handleChangeName = (e) => {
+		this.setState({
+			title: e.target.value
+		});
+	};
+
 	render() {
 
-		const { _id, title, completed, show, closeModalMoving, changeGroup, deleteTask } = this.props;
+		const { _id, title, modalTitle, changeTitle, closeModal, show } = this.props;
 
 		return (
 			<>
 				<Modal
 					show={show}
-					onHide={closeModalMoving}
+					onHide={closeModal}
 				>
 					<Modal.Header>
-						<Modal.Title>Moving Task</Modal.Title>
+						<Modal.Title>{ modalTitle }</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
-						<h3>Choose GROUP</h3>
+
+						{/*<Form>
+							<Form.Control
+								type="text"
+								placeholder={ title }
+								value={this.state.title}
+								onChange={this.handleChangeName}
+							/>
+						</Form>*/}
+
+						{/*<h3>Choose GROUP</h3>
 						<div className="d-flex flex-column">
 							<ButtonGroup>
 								{
@@ -45,17 +66,22 @@ export default class MovingTask extends React.Component {
 									))
 								}
 							</ButtonGroup>
-						</div>
+						</div>*/}
+
 					</Modal.Body>
 					<Modal.Footer>
 						<Button
 							variant="secondary"
-							onClick={closeModalMoving}
+							onClick={closeModal}
 						>
 							Close
 						</Button>
 						<Button
 							variant="primary"
+							onClick={() => {
+								changeTitle(_id, this.state.title);
+								closeModal();
+							}}
 						>
 							Save Changes
 						</Button>

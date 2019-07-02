@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Col, Row, Toast, Button, OverlayTrigger, Tooltip, ButtonGroup, Form } from 'react-bootstrap';
+import {Col, Row, Toast, Button, OverlayTrigger, Tooltip, ButtonGroup, Form, Modal} from 'react-bootstrap';
 import styled from 'styled-components';
 
-import RenameTask from "./RenameTask.component";
-import MovingTaskContainer from "../../containers/MovingTask.container";
+import TaskModalContainer from "../../containers/TaskModal.container";
+import TaskModal from "./TaskModal.component";
 
 const TaskNameBlock = styled.div`
 	display: flex;
@@ -120,22 +120,32 @@ export default class Task extends Component {
 										/>
 									</OverlayTrigger>
 								</ButtonGroup>
-								<MovingTaskContainer
-									show={showModalMoving}
-									closeModalMoving={this.handleCloseModalMoving}
-									_id={_id}
-									title={title}
-									completed={completed}
-									toggleClose={toggleClose}
-									deleteTask={deleteTask}
-								/>
-								<RenameTask
-									show={showModalRename}
-									closeModalRename={this.handleCloseModalRename}
-									_id={_id}
-									title={title}
-									changeTitle={changeTitle}
-								/>
+
+								{
+									this.state.showModalMoving ?
+										<TaskModalContainer
+											show={showModalMoving}
+											closeModal={this.handleCloseModalMoving}
+											modalTitle="Moving Task"
+											_id={_id}
+											title={title}
+											completed={completed}
+											toggleClose={toggleClose}
+											deleteTask={deleteTask}
+										/> : null
+								}
+								{
+									this.state.showModalRename ?
+										<TaskModal
+											show={showModalRename}
+											closeModal={this.handleCloseModalRename}
+											modalTitle="Rename Task"
+											_id={_id}
+											title={title}
+											changeTitle={changeTitle}
+										/> : null
+								}
+
 							</Row>
 						</Toast.Body>
 					</Toast>

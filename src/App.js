@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import styled, {createGlobalStyle} from 'styled-components';
+import { connect } from "react-redux";
+import { getGroupList } from './redux/actions';
 import GroupListContainer from './containers/GroupList.container';
 import CreateGroupContainer from './containers/CreateGroup.container';
 import { Col, Container, Row } from "react-bootstrap";
@@ -32,7 +34,18 @@ const Wrapper = styled.main`
   height: 100%;
 `;
 
-export default class App extends Component {
+const mapDispatchToProps = dispatch => ({
+  getGroupList: () => {
+    dispatch(getGroupList());
+  }
+});
+
+class App extends Component {
+
+  componentDidMount() {
+    this.props.getGroupList();
+  }
+
   render() {
     return (
       <Wrapper>
@@ -47,7 +60,6 @@ export default class App extends Component {
               <GroupListContainer />
             </Col>
           </Row>
-
           <Footer>
             <Container>
               <span className="text-muted">
@@ -59,4 +71,9 @@ export default class App extends Component {
       </Wrapper>
     )
   }
-};
+}
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(App);
