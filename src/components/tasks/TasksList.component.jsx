@@ -5,7 +5,7 @@ import { Row, Card, ListGroup } from "react-bootstrap";
 export default class TasksList extends React.Component {
   render() {
 
-    const { items } = this.props.data;
+    const { items, _id } = this.props.data;
     const { changeTitle, deleteTask, changeCompleted } = this.props;
 
     return (
@@ -27,6 +27,7 @@ export default class TasksList extends React.Component {
                     <ListGroup.Item key={i}>
                       <Task
                         data={item}
+                        _idGroup={_id}
                         changeCompleted={changeCompleted}
                         changeTitle={changeTitle}
                         deleteTask={deleteTask}

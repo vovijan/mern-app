@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import {Col, Row, Toast, Button, OverlayTrigger, Tooltip, ButtonGroup, Form, Modal} from 'react-bootstrap';
 import styled from 'styled-components';
+import { connect } from "react-redux";
+import { changeGroup } from "../../redux/actions";
 
-import TaskModalContainer from "../../containers/TaskModal.container";
 import TaskModal from "./TaskModal.component";
 
 const TaskNameBlock = styled.div`
@@ -10,12 +11,23 @@ const TaskNameBlock = styled.div`
 	margin: 0;
 `;
 
-export default class Task extends Component {
+const mapStateToProps = state => ({
+	groups: state.data
+});
+
+const mapDispatchToProps = dispatch => ({
+	changeGroup: (id, data) => {
+		dispatch(changeGroup({ id, data }));
+	}
+});
+
+class Task extends Component {
 
 	state = {
 		show: true,
 		showModalMoving: false,
-		showModalRename: false
+		showModalRename: false,
+		radio: ''
 	};
 
 	handleCloseModalMoving = () => {
@@ -40,6 +52,32 @@ export default class Task extends Component {
 		this.setState({
 			showModalRename: true
 		});
+	};
+
+	handleRename = () => {
+		console.log('rename');
+	};
+
+	handleMove = () => {
+		console.log(this.state.radio);
+		this.props.changeGroup(this.props._idGroup, {
+			title: this.state.radio,
+			items: [
+				...this.props.groups.items,
+				{
+					_id: Date.now(),
+					title: this.props.data.title,
+					completed: this.props.data.completed
+				}
+			]
+		});
+		this.props.deleteTask(this.props.data._id);
+	};
+
+	handleChange = e => {
+		this.setState({
+			radio: e.target.value
+		})
 	};
 
 	render() {
@@ -121,30 +159,48 @@ export default class Task extends Component {
 									</OverlayTrigger>
 								</ButtonGroup>
 
-								{
-									this.state.showModalMoving ?
-										<TaskModalContainer
-											show={showModalMoving}
-											closeModal={this.handleCloseModalMoving}
-											modalTitle="Moving Task"
-											_id={_id}
-											title={title}
-											completed={completed}
-											toggleClose={toggleClose}
-											deleteTask={deleteTask}
-										/> : null
-								}
-								{
-									this.state.showModalRename ?
-										<TaskModal
-											show={showModalRename}
-											closeModal={this.handleCloseModalRename}
-											modalTitle="Rename Task"
-											_id={_id}
-											title={title}
-											changeTitle={changeTitle}
-										/> : null
-								}
+								<TaskModal
+									show={showModalMoving}
+									modalTitle="Moving Task"
+									saveCallback={this.handleMove}
+									closeCallback={this.handleCloseModalMoving}
+								>
+									<Modal.Body>
+										<h3>Choose GROUP</h3>
+										<div className="d-flex flex-column">
+											{
+												this.props.groups.map((item, i) => (
+													<Form.Check
+														key={i}
+														name='group'
+														type='radio'
+														label={item.title}
+														value={item.title}
+														onChange={this.handleChange}
+													/>
+												))
+											}
+										</div>
+									</Modal.Body>
+								</TaskModal>
+
+								<TaskModal
+									show={showModalRename}
+									modalTitle="Rename Task"
+									saveCallback={this.handleRename}
+									closeCallback={this.handleCloseModalRename}
+								>
+									<Modal.Body>
+										<Form>
+											<Form.Control
+												type="text"
+												placeholder={ title }
+												value={this.state.title}
+												onChange={this.handleChangeName}
+											/>
+										</Form>
+									</Modal.Body>
+								</TaskModal>
 
 							</Row>
 						</Toast.Body>
@@ -153,4 +209,9 @@ export default class Task extends Component {
 			</Row>
 		)
 	}
-};
+}
+
+export default connect(
+	mapStateToProps,
+	mapDispatchToProps
+)(Task);
