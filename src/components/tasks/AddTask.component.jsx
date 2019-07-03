@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Badge, Button, Form, OverlayTrigger, Row, Tooltip} from "react-bootstrap";
+import { Badge, Button, Form, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 
 export default class AddTask extends Component {
 

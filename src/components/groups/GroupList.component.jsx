@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Group from './Group.component';
-import {Badge, Card} from "react-bootstrap";
+import { Badge, Card } from "react-bootstrap";
 import styled from 'styled-components';
 
 const GroupBlock = styled.div`
@@ -8,33 +8,30 @@ const GroupBlock = styled.div`
 	flex-wrap: wrap;
 `;
 
-export default class GroupList extends Component {
-
-	render() {
-		return (
-			<Card>
-				<Card.Header>
-					<h3>GROUPS &nbsp;&nbsp;
-						<Badge variant="secondary">
-							{
-								this.props.data.length === 0 ? null : this.props.data.length
-							}
-						</Badge>
-					</h3>
-				</Card.Header>
-				<GroupBlock>
+const GroupList = ({ data, deleteGroup, changeGroup }) => (
+	<Card>
+		<Card.Header>
+			<h3>GROUPS &nbsp;&nbsp;
+				<Badge variant="secondary">
 					{
-						this.props.data.map((item, i) => (
-							 <Group
-								 data={item}
-								 key={i}
-								 deleteGroup={this.props.deleteGroup}
-								 changeGroup={this.props.changeGroup}
-							 />
-						))
+						data.length === 0 ? null : data.length
 					}
-				</GroupBlock>
-			</Card>
-		)
-	}
-}
+				</Badge>
+			</h3>
+		</Card.Header>
+		<GroupBlock>
+			{
+				data.map((item, i) => (
+					 <Group
+						 data={item}
+						 key={i}
+						 deleteGroup={deleteGroup}
+						 changeGroup={changeGroup}
+					 />
+				))
+			}
+		</GroupBlock>
+	</Card>
+);
+
+export default GroupList;
