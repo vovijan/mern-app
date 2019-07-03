@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { changeGroup } from "../../redux/actions";
 
 import TaskModal from "./TaskModal.component";
+import TaskButtonGroup from './TaskButtonGroup.component';
 
 const TaskNameBlock = styled.div`
 	display: flex;
@@ -138,33 +139,20 @@ class Task extends Component {
 										</TaskNameBlock>
 									</OverlayTrigger>
 								</Col>
+
 								<ButtonGroup aria-label="Basic example">
-									<OverlayTrigger
+									<TaskButtonGroup
 										placement="left"
-										overlay={
-											<Tooltip id="tooltip-left">
-												Moving
-											</Tooltip>
-										}
-									>
-										<Button
-											variant="outline-primary"
-											onClick={this.handleShowModalMoving}
-										/>
-									</OverlayTrigger>
-									<OverlayTrigger
+										title="Moving"
+										onClick={this.handleShowModalMoving}
+										variant="primary"
+									/>
+									<TaskButtonGroup
 										placement="right"
-										overlay={
-											<Tooltip id="tooltip-right">
-												Rename
-											</Tooltip>
-										}
-									>
-										<Button
-											variant="outline-success"
-											onClick={this.handleShowModalRename}
-										/>
-									</OverlayTrigger>
+										title="Rename"
+										onClick={this.handleShowModalRename}
+										variant="success"
+									/>
 								</ButtonGroup>
 
 								<TaskModal
