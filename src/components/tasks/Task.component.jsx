@@ -27,7 +27,8 @@ class Task extends Component {
 		show: true,
 		showModalMoving: false,
 		showModalRename: false,
-		radio: ''
+		radio: '',
+		title: ''
 	};
 
 	handleCloseModalMoving = () => {
@@ -55,15 +56,16 @@ class Task extends Component {
 	};
 
 	handleRename = () => {
-		console.log('rename');
+		this.props.changeTitle(this.props.data._id, this.state.title);
+		this.handleCloseModalRename();
 	};
 
 	handleMove = () => {
-		console.log(this.state.radio);
-		this.props.changeGroup(this.props._idGroup, {
-			title: this.state.radio,
+		const resultGroup = this.props.groups.find(group => group._id === this.state.radio);
+		this.props.changeGroup(resultGroup._id, {
+			title: resultGroup.title,
 			items: [
-				...this.props.groups.items,
+				...resultGroup.items,
 				{
 					_id: Date.now(),
 					title: this.props.data.title,
@@ -80,6 +82,12 @@ class Task extends Component {
 		})
 	};
 
+	handleChangeName = e => {
+		this.setState({
+			title: e.target.value
+		})
+	};
+
 	render() {
 
 		const completedStyle = {
@@ -89,7 +97,7 @@ class Task extends Component {
 		};
 
 		const { title, completed, _id } = this.props.data;
-		const { changeCompleted, changeTitle, deleteTask } = this.props;
+		const { changeCompleted, deleteTask } = this.props;
 		const { show, showModalMoving, showModalRename } = this.state;
 		const toggleClose = () => deleteTask(_id);
 
@@ -175,7 +183,7 @@ class Task extends Component {
 														name='group'
 														type='radio'
 														label={item.title}
-														value={item.title}
+														value={item._id}
 														onChange={this.handleChange}
 													/>
 												))

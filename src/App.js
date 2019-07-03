@@ -23,7 +23,10 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Footer = styled.footer`
-  flex: 0 0 auto;
+  position: fixed;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
   line-height: 60px;
   background-color: #f5f5f5;
 `;
@@ -31,7 +34,8 @@ const Footer = styled.footer`
 const Wrapper = styled.main`
   display: flex;
   flex-direction: column;
-  height: 100%;
+  min-height: 100vh;
+  margin-bottom: 60px;
 `;
 
 const mapDispatchToProps = dispatch => ({
@@ -60,14 +64,14 @@ class App extends Component {
               <GroupListContainer />
             </Col>
           </Row>
-          <Footer>
-            <Container>
+        </Container>
+        <Footer>
+          <Container>
               <span className="text-muted">
                 MERN App (Todo) with Bootstrap 4
               </span>
-            </Container>
-          </Footer>
-        </Container>
+          </Container>
+        </Footer>
       </Wrapper>
     )
   }
