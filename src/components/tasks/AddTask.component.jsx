@@ -54,12 +54,15 @@ export default class AddTask extends Component {
 							{
 								!this.state.visible ?
 									<>
-										<span>Total Task</span>&nbsp;&nbsp;
-										<Badge variant="light">
-											{
-												this.props.items.length === 0 ? null : this.props.items.length
-											}
-										</Badge>
+										{
+											this.props.items.length === 0 ? <i className="fas fa-arrow-circle-down"/> :
+												<>
+													<span>Total Task &nbsp;&nbsp;</span>
+													<Badge variant="light">
+														{this.props.items.length}
+													</Badge>
+												</>
+										}
 									</> :
 									<i className="fas fa-arrow-circle-up"/>
 							}

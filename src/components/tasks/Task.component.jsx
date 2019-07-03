@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Row, Toast, OverlayTrigger, Tooltip, ButtonGroup, Form, Modal } from 'react-bootstrap';
+import { Col, Row, Toast, ButtonGroup, Form, Modal } from 'react-bootstrap';
 import styled from 'styled-components';
 import { connect } from "react-redux";
 import { changeGroup } from "../../redux/actions";
@@ -29,7 +29,7 @@ class Task extends Component {
 		showModalMoving: false,
 		showModalRename: false,
 		radio: '',
-		title: ''
+		title: this.props.data.title
 	};
 
 	handleCloseModalMoving = () => {
@@ -98,9 +98,11 @@ class Task extends Component {
 		};
 
 		const { title, completed, _id } = this.props.data;
-		const { changeCompleted, deleteTask } = this.props;
+		const { changeCompleted, deleteTask, idGroup } = this.props;
 		const { show, showModalMoving, showModalRename } = this.state;
 		const toggleClose = () => deleteTask(_id);
+
+		const filterGroup = this.props.groups.filter(item => item._id !== idGroup);
 
 		return (
 			<Row>
@@ -113,47 +115,37 @@ class Task extends Component {
 							<strong className="mr-auto">
 								TASK
 							</strong>
+							<ButtonGroup aria-label="Basic example">
+								<TaskButtonGroup
+									placement="left"
+									title="Moving"
+									onClick={this.handleShowModalMoving}
+									variant="primary"
+								/>
+								<TaskButtonGroup
+									placement="right"
+									title="Rename"
+									onClick={this.handleShowModalRename}
+									variant="success"
+								/>
+							</ButtonGroup>
 						</Toast.Header>
 						<Toast.Body>
 							<Row>
-								<Col md='8'>
-									<OverlayTrigger
-										placement="left"
-										overlay={
-											<Tooltip id="tooltip-left">
-												Complete / Uncompleted
-											</Tooltip>
-										}
+								<Col md='12'>
+									<TaskNameBlock
+										style={ completed ? completedStyle : null }
 									>
-										<TaskNameBlock
-											style={ completed ? completedStyle : null }
-										>
-											<Form.Check
-												type="checkbox"
-												checked={ completed }
-												onChange={() => {
-													changeCompleted(_id)
-												}}
-											/>
-											<span>{ title }</span>
-										</TaskNameBlock>
-									</OverlayTrigger>
+										<Form.Check
+											type="checkbox"
+											checked={ completed }
+											onChange={() => {
+												changeCompleted(_id)
+											}}
+										/>
+										<p style={{ margin: 0, width: '95%' }}>{ title }</p>
+									</TaskNameBlock>
 								</Col>
-
-								<ButtonGroup aria-label="Basic example">
-									<TaskButtonGroup
-										placement="left"
-										title="Moving"
-										onClick={this.handleShowModalMoving}
-										variant="primary"
-									/>
-									<TaskButtonGroup
-										placement="right"
-										title="Rename"
-										onClick={this.handleShowModalRename}
-										variant="success"
-									/>
-								</ButtonGroup>
 
 								<TaskModal
 									show={showModalMoving}
@@ -165,7 +157,7 @@ class Task extends Component {
 										<h3>Choose GROUP</h3>
 										<div className="d-flex flex-column">
 											{
-												this.props.groups.map((item, i) => (
+												filterGroup.map((item, i) => (
 													<Form.Check
 														key={i}
 														name='group'
@@ -190,7 +182,6 @@ class Task extends Component {
 										<Form>
 											<Form.Control
 												type="text"
-												placeholder={ title }
 												value={this.state.title}
 												onChange={this.handleChangeName}
 											/>

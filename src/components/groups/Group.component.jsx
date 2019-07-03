@@ -92,7 +92,7 @@ export default class Group extends Component {
 
 	render() {
 		return (
-			<Card style={{ border: 'none' }}>
+			<Card style={{ border: 'none', width: '19rem' }}>
 				<Card.Body>
 					<Row
 						onClick={this.toggleEditTrue}

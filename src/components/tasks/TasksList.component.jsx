@@ -21,6 +21,7 @@ const TasksList = ({ data, changeTitle, deleteTask, changeCompleted }) => (
                 <ListGroup.Item key={i}>
                   <Task
                     data={item}
+                    idGroup={data._id}
                     changeCompleted={changeCompleted}
                     changeTitle={changeTitle}
                     deleteTask={deleteTask}
