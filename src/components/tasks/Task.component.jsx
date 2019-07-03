@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Col, Row, Toast, Button, OverlayTrigger, Tooltip, ButtonGroup, Form, Modal} from 'react-bootstrap';
+import { Col, Row, Toast, OverlayTrigger, Tooltip, ButtonGroup, Form, Modal } from 'react-bootstrap';
 import styled from 'styled-components';
 import { connect } from "react-redux";
 import { changeGroup } from "../../redux/actions";

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Task from './Task.component';
-import { Row, Card, ListGroup } from "react-bootstrap";
+import {Row, Card, ListGroup, Alert} from "react-bootstrap";
 
-export default class TasksList extends React.Component {
+export default class TasksList extends  Component {
   render() {
 
     const { items } = this.props.data;
@@ -35,7 +35,15 @@ export default class TasksList extends React.Component {
                   )
                 }
               </ListGroup>
-            </Card> : null
+            </Card> :
+            <Alert
+              variant="info"
+              style={{
+                width: '100%',
+                marginTop: '1.3rem',
+                textAlign: 'center'
+              }}
+            >No Tasks!</Alert>
         }
       </Row>
     )

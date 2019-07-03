@@ -17,7 +17,7 @@ export default class GroupList extends Component {
 					<h3>GROUPS &nbsp;&nbsp;
 						<Badge variant="secondary">
 							{
-								this.props.data.length
+								this.props.data.length === 0 ? null : this.props.data.length
 							}
 						</Badge>
 					</h3>

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {Badge, Button, Form, OverlayTrigger, Row, Tooltip} from "react-bootstrap";
 
-export default class AddTask extends React.Component {
+export default class AddTask extends Component {
 
 	state = {
 		title: '',
@@ -57,7 +57,7 @@ export default class AddTask extends React.Component {
 										<span>Total Task</span>&nbsp;&nbsp;
 										<Badge variant="light">
 											{
-												this.props.items.length
+												this.props.items.length === 0 ? null : this.props.items.length
 											}
 										</Badge>
 									</> :

@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {Container, Form, FormControl, Nav, Navbar, NavbarBrand} from 'react-bootstrap';
 
-export default class NavBar extends React.Component {
+export default class NavBar extends Component {
 
 	state = {
 		title: ''
