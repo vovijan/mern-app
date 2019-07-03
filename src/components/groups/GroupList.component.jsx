@@ -3,7 +3,7 @@ import Group from './Group.component';
 import {Badge, Card} from "react-bootstrap";
 import styled from 'styled-components';
 
-const Flexrow = styled.div`
+const GroupBlock = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 `;
@@ -22,7 +22,7 @@ export default class GroupList extends Component {
 						</Badge>
 					</h3>
 				</Card.Header>
-				<Flexrow>
+				<GroupBlock>
 					{
 						this.props.data.map((item, i) => (
 							 <Group
@@ -33,7 +33,7 @@ export default class GroupList extends Component {
 							 />
 						))
 					}
-				</Flexrow>
+				</GroupBlock>
 			</Card>
 		)
 	}
