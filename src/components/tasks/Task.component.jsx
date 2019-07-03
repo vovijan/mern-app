@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Row, Toast, ButtonGroup, Form, Modal } from 'react-bootstrap';
+import {Col, Row, Toast, ButtonGroup, Form, Modal, Card} from 'react-bootstrap';
 import styled from 'styled-components';
 import { connect } from "react-redux";
 import { changeGroup } from "../../redux/actions";
@@ -158,14 +158,24 @@ class Task extends Component {
 										<div className="d-flex flex-column">
 											{
 												filterGroup.map((item, i) => (
-													<Form.Check
+													<Card key={i}>
+														<Card.Body>
+															<input
+																name='group'
+																type='radio'
+																value={item._id}
+																onChange={this.handleChange}/>
+															<p style={{ wordWrap: 'break-word', margin: 0 }}>{item.title}</p>
+														</Card.Body>
+													</Card>
+													/*<Form.Check
 														key={i}
 														name='group'
 														type='radio'
 														label={item.title}
 														value={item._id}
 														onChange={this.handleChange}
-													/>
+													/>*/
 												))
 											}
 										</div>

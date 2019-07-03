@@ -28,6 +28,8 @@ const TaskModal = ({ modalTitle, show, closeCallback, saveCallback, children }) 
 	<Modal
 		show={show}
 		onHide={closeCallback}
+		aria-labelledby="contained-modal-title-vcenter"
+		centered
 	>
 		<TaskModalHeader
 			title={modalTitle}
