@@ -1,15 +1,27 @@
 import React, { useState } from 'react';
 import { Container, Form, FormControl, Nav, Navbar, NavbarBrand } from 'react-bootstrap';
 
+const useInputValue = (defaultValue = '') => {
+	const [value, setValue] = useState(defaultValue);
+	return {
+		bind: {
+			value,
+			onChange: event => setValue(event.target.value)
+		},
+		clear: () => setValue(''),
+		value: () => value
+	};
+};
+
 const NavBar = ({ addGroup }) => {
 
-	const [value, setValue] = useState('');
+	const input = useInputValue('');
 
 	const onSubmit = event => {
 		event.preventDefault();
-		if (value.trim()) {
-			addGroup(value);
-			setValue('');
+		if (input.value().trim()) {
+			addGroup(input.value());
+			input.clear();
 		}
 	};
 
@@ -28,8 +40,7 @@ const NavBar = ({ addGroup }) => {
 						type="text"
 						name="title"
 						className="mr-sm-2"
-						value={value}
-						onChange={event => setValue(event.target.value)}
+						{...input.bind}
 					/>
 					<FormControl
 						type="submit"
