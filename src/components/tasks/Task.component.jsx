@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Col, Row, Toast, ButtonGroup, Form, Modal, Card} from 'react-bootstrap';
+import { Col, Row, Toast, ButtonGroup, Form, Modal, FormControl } from 'react-bootstrap';
 import styled from 'styled-components';
 import { connect } from "react-redux";
 import { changeGroup } from "../../redux/actions";
@@ -10,6 +10,12 @@ import TaskButtonGroup from './TaskButtonGroup.component';
 const TaskNameBlock = styled.div`
 	display: flex;
 	margin: 0;
+`;
+
+const ChooseGroupName = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 `;
 
 const mapStateToProps = state => ({
@@ -158,24 +164,21 @@ class Task extends Component {
 										<div className="d-flex flex-column">
 											{
 												filterGroup.map((item, i) => (
-													<Card key={i}>
-														<Card.Body>
-															<input
-																name='group'
-																type='radio'
-																value={item._id}
-																onChange={this.handleChange}/>
-															<p style={{ wordWrap: 'break-word', margin: 0 }}>{item.title}</p>
-														</Card.Body>
-													</Card>
-													/*<Form.Check
-														key={i}
-														name='group'
-														type='radio'
-														label={item.title}
-														value={item._id}
-														onChange={this.handleChange}
-													/>*/
+													<ChooseGroupName key={i}>
+														<input
+															name='group'
+															type='radio'
+															value={item._id}
+															onChange={this.handleChange}
+														/>
+														<p style={{
+															wordWrap: 'break-word',
+															margin: 0
+														}}
+														>
+															{item.title}
+														</p>
+													</ChooseGroupName>
 												))
 											}
 										</div>

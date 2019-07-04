@@ -3,7 +3,7 @@ import {
 	GET_GROUP_SUCCESS,
 	ADD_NEW_GROUP_SUCCESS,
 	DELETE_GROUP,
-	CHANGE_GROUP
+	CHANGE_GROUP, GET_GROUP_ERROR
 } from "./constants";
 import axios from 'axios';
 
@@ -14,6 +14,7 @@ export const getGroupList = () => {
 		axios.get("/boards")
 			.then(res => dispatch(getGroupSuccess(res.data)))
 			.catch(error => {
+				dispatch(getGroupError(error));
 				throw(error);
 			});
 	};
@@ -25,6 +26,11 @@ const getStarted = () => ({
 
 const getGroupSuccess = payload => ({
 	type: GET_GROUP_SUCCESS,
+	payload
+});
+
+const getGroupError = payload => ({
+	type: GET_GROUP_ERROR,
 	payload
 });
 

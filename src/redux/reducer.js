@@ -3,11 +3,11 @@ import {
 	GET_GROUP_STARTED,
 	ADD_NEW_GROUP_SUCCESS,
 	DELETE_GROUP,
-	CHANGE_GROUP
+	CHANGE_GROUP, GET_GROUP_ERROR
 } from "./constants";
 
 const initialState = {
-		loading: false,
+	loading: false,
 	data: [],
 	error: null
 };
@@ -25,6 +25,11 @@ export const reducer = (state = initialState, action) => {
 				loading: false,
 				error: null,
 				data: action.payload
+			};
+		case GET_GROUP_ERROR:
+			return {
+				...state,
+				error: 'Alarm!'
 			};
 		case ADD_NEW_GROUP_SUCCESS:
 			return {
